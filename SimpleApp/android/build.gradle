@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.alibaba:fastjson:1.2.8'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+System.out.println("rootDir：$rootDir")
+System.out.println("projectDir：$projectDir")
+/*
+一些项目路径相关的属性
+allprojects: [root project 'SimpleApp', project ':app']
+asDynamicObject: DynamicObject for root project 'SimpleApp'
+project: root project 'SimpleApp'
+projectDir: D:\git_source\wbhqf_SomeReact\SimpleApp\android
+rootDir: D:\git_source\wbhqf_SomeReact\SimpleApp\android
+rootProject: root project 'SimpleApp'
+ */
+
+allprojects {
+    repositories {
+        mavenLocal()
+        jcenter()
+//        maven {
+//            url 'https://maven.google.com'
+//        }
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+            /*
+            $rootDir指项目根目录，此处即android目录，全路径为"D:\git_source\wbhqf_SomeReact\SimpleApp\android"
+            $rootDir/../node_modules即android目录的上级目录下的node_modules，如下所示：
+            D:\git_source\wbhqf_SomeReact\SimpleApp\android/../node_modules/react-native/android
+            这样的路径，maven能识别，在windows下打开即为"D:\git_source\wbhqf_SomeReact\SimpleApp\node_modules\react-native\android"，
+            相当于去掉android项目根目录本身了。
+             */
+            // 其他路径下的react-native库，方便临时切换库进行编译
+//            url "F:\\ReactNative\\0.46.4\\react-native\\android"
+            // 除了绝对路径外，也可以使用相对路径，必须是能找到的，如果找不能，则会去其他repoitories中检索
+        }
+    }
+}

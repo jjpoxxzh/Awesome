@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 白色 -->
+    <color name="white">#ffffff</color>
+    <!-- 白色 -->
+    <color name="black">#000000</color>
+
+    <!-- 背景色 -->
+    <color name="common_cotent_bg1">#bebebe</color>
+    <color name="common_cotent_bg2">#ebebeb</color>
+    <color name="common_cotent_bg3">#f5f5f5</color>
+
+    <!-- 7种随机颜色 -->
+    <color name="color_1">#FFAC69</color>
+    <color name="color_2">#F08176</color>
+    <color name="color_3">#6CCBC7</color>
+    <color name="color_4">#CD8CC0</color>
+    <color name="color_5">#6FA9CE</color>
+    <color name="color_6">#85B979</color>
+    <color name="color_7">#A58F8F</color>
+
+    <!-- 罗盘背景颜色 -->
+    <color name="background_color">#F555</color>
+    <!-- 罗盘标识颜色 -->
+    <color name="marker_color">#AFFF</color>
+    <!-- 罗盘文字颜色 -->
+    <color name="text_color">#AF00</color>
+
+    <!-- ToDoListItemView背景颜色 -->
+    <color name="notepad_paper">#EEF8E0A0</color>
+    <!-- ToDoListItemView下边缘线颜色：蓝色 -->
+    <color name="notepad_lines">#FF0000FF</color>
+    <!-- ToDoListItemView左边距线的颜色：红色 -->
+    <color name="notepad_margin">#90FF0000</color>
+    <!-- ToDoListItemView文本的颜色：蓝色 -->
+    <color name="notepad_text">#AA0000FF</color>
+
+    <!-- 黑色文字颜色 -->
+    <color name="item_title_text_color">#313131</color>
+    <!-- 灰色文字颜色 -->
+    <color name="item_summary_text_color">#7d7d7d</color>
+    
+    <!-- 按压下时的颜色 -->
+    <color name="radiobg_press">#bebebe</color>
+    <!-- 正常时的颜色 -->
+    <color name="radiobg_normal">#444444</color>
+    <!-- 选中时的颜色 -->
+	<color name="radiobg_check">#ff0000</color>
+
+
+</resources>

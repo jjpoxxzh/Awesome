@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SimpleApp</string>
+
+    <string name="test">React Native样例测试</string>
+</resources>

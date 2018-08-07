@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 定义该形状里面为渐变色填充。startColor起始颜色，endColor结束颜色，angle表示方向角度。当angle=0时，渐变色是从左向右。 然后逆时针方向转，当angle=90时为从下往上。 -->
+    <gradient
+        android:angle="90"
+        android:endColor="#bfbfbf"
+        android:startColor="#bfbfbf" />
+
+    <corners
+        android:bottomLeftRadius="5dp"
+        android:topLeftRadius="5dp" />
+
+    <!-- 使用微信通讯录字母表的颜色填充，从上到下，左上角、左下角为圆角，半径为5dp -->
+
+</shape>
