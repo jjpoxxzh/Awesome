@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性盒子</title>
+    <style type="text/css">
+        *{
+            -webkit-padding-start:0;
+        }
+        .navigation {
+            list-style: none;
+            margin: 0;
+            background: #e7e7e7;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            display: block;
+            padding: 1em;
+            color: white;
+            background-color: #f32e37;
+        }
+
+        .navigation a:hover {
+            background: #00AEE8;
+        }
+
+        @media all and (max-width: 800px) {
+            .navigation {
+                justify-content: space-around
+            }
+        }
+
+        @media all and (max-width: 600px) {
+            .navigation {
+                -webkit-flex-flow: column wrap;
+                padding: 0
+            }
+        }
+
+        /*宽度小于600的时候自动换行：*/
+        .navigation a {
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+        }
+
+        .navigation li:last-of-type a {
+            background: #00AEE8;
+            border-bottom: 0;
+        }
+
+        /*指定父元素的最后一个 li 元素的背景色： li:nth-child(3) li的第3个元素   li:first-child 父元素的第一个子元素li里的内容*/
+
+    </style>
+</head>
+<body>
+<ul class="navigation">
+    <li><a href="#">首页首页</a></li>
+    <li><a href="#">简介简介</a></li>
+    <li><a href="#">公司介绍</a></li>
+    <li><a href="#">联系我们</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>事件监听</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<br>
+<div id="example-1">
+    <button v-on:click="counter += 1">增加一次</button>
+    <button v-on:click="counter -= 1">减少一次</button>
+    <button v-on:click="$destroy()">销毁</button>
+    <p>这个按钮被点了 {{counter}} 次</p>
+    <button v-on:click="">事件对象名称</button>
+    <button @click="say('hi')">Say hi</button>
+    <button @click="say('what')">Say what</button>
+    <button @click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+</div>
+<br>
+
+
+<script>
+
+  var vm = new Vue({
+    el: '#example-1',
+    data: {
+      counter: 0
+    },
+    methods: {
+      greet: function (event) {
+        if (event) {
+          alert(event.target.tagName);
+        }
+      },
+      say: function (message) {
+        alert(message);
+        console.log(message)
+      },
+      warn: function (message, event) {
+        if (event) event.preventDefault();
+        alert(message);
+      }
+    },
+    beforeCreate: function () {
+      console.group('beforeCreate 创建前状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);   // undefined
+      console.log("%c%s", "color:green", "data ：" + this.$data);   // undefined
+    },
+    created: function () {
+      console.group('created 创建完毕状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);     // undefined
+      console.log("%c%s", "color:green", "data ：" + this.$data);     // 已被初始化
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+      console.groupEnd();
+      console.groupEnd();
+    },
+    beforeMount: function () {
+      console.group('beforeMount 挂载前状态===============》');
+      console.log("%c%s", "color:red", "el ：" + (this.$el));   // 已被初始化，但模板未替换
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data);     // 已被初始化
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+    },
+    mounted: function () {
+      console.group('mounted 挂载结束状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el); //已被初始化，但模板已替换
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data); //已被初始化
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+      console.groupEnd();
+      console.groupEnd();
+    },
+    beforeUpdate: function () {
+      console.group('beforeUpdate 更新前状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data);
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+    },
+    updated: function () {
+      console.group('updated 更新完成状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data);
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+      console.groupEnd();
+      console.groupEnd();
+    },
+    beforeDestroy: function () {
+      console.group('beforeDestroy 销毁前状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data);
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+    },
+    destroyed: function () {
+      console.group('destroyed 销毁完成状态===============》');
+      console.log("%c%s", "color:red", "el ：" + this.$el);
+      console.log(this.$el);
+      console.log("%c%s", "color:green", "data ：" + this.$data);
+      console.log("%c%s", "color:green", JSON.stringify(this.$data));
+      console.groupEnd();
+      console.groupEnd();
+    }
+  });
+  // 浏览器控制台手动调用 vm.$destroy() 来执行销毁操作
+</script>
+</body>
+</html>

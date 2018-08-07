@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>v-for指令在列表上的应用</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="example-1">
+    <!-- v-for指令 -->
+    <p>v-for指令</p>
+    <ul>
+        <li v-for="item in items">{{item.message}}</li>
+    </ul>
+
+    <!-- v-for指令中使用可选的第二个参数来作为当前项的索引 -->
+    <p>v-for指令：可选的第二个参数作为索引</p>
+    <ul>
+        <li v-for="(item,index) in items">{{parentMessage}}-{{index}}-{{item.message}}</li>
+    </ul>
+</div>
+<br>
+
+<div id="v-for-object">
+    <p>v-for通过一个对象的属性来迭代</p>
+    <ul class="demo">
+        <li v-for="value in object">
+            {{ value }}
+        </li>
+    </ul>
+    <p>v-for通过一个对象的属性来迭代：第二个参数作为健名</p>
+    <ul class="demo">
+        <li v-for="(value,key) in object">
+            {{key}}&nbsp;: {{ value }}
+        </li>
+    </ul>
+    <p>v-for通过一个对象的属性来迭代：第三个参数作为索引</p>
+    <ul class="demo">
+        <li v-for="(value,key,index) in object">
+            {{index}}. {{key}} : {{ value }}
+        </li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            parentMessage: 'Parent',
+            items: [
+                {message: 'JavaScript完全教程'},
+                {message: '王码五笔'},
+                {message: '疯狂Android讲义'},
+                {message: '从入门到放弃'}
+            ]
+        }
+    });
+
+    var vm2 = new Vue({
+        el: '#v-for-object',
+        data: {
+            object: {
+                firstName: 'John',
+                lastName: 'Doe',
+                age: 30
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>主页测试</title>
+    <script src="vue.js"></script>
+
+</head>
+<body>
+
+<div id="example-1">
+    <button @click="counter += 1">增加一次</button>
+    <button @click="counter -= 1">减少一次</button>
+    <p>这个按钮被点了 {{counter}} 次</p>
+</div>
+
+<script>
+
+  var vm = new Vue({
+    el: '#example-1',
+    data: {
+      counter: 0
+    },
+    methods: {
+      // 去掉数组中重复的元素(思路是用hashtable来去除重复的数组元素，再从hashtable里把key取出来就得到不重复的数组了)
+      arr(target) {
+        let a = {};  // 定义一个对像，与let a = new Ojbect()等同
+        for (let i = 0; i < target.length; i++) {
+          // 将 key:序号 存入哈希表，重复的key不存
+          if (typeof(a[target[i]]) == "undefined")
+            a[target[i]] = i
+        }
+        target.length = 0
+        for (let j in a) {      // 取出key
+          target[target.length] = j
+        }
+        return target;
+      }
+    }
+  });
+
+  let array = [1, 2, 3, 4, 2, 5, 1]
+  vm.arr(array)
+  console.log(array)
+  /*
+   for (let j in array) {
+   alert(j);   // 循环alert，后面的弹窗遮盖了前面的，导致看起来像是顺序反了一样。
+   }
+   */
+</script>
+
+</body>
+</html>

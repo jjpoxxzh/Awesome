@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>另一种水平菜单</title>
+    <style type="text/css">
+
+        ul {
+            padding-left: 0;
+            margin-left: 0;
+            border: 1px solid #f32e37;
+        }
+
+        ul li {
+            display: inline-block; /*默认li的display为list-item，现在设置为inline就不需要去设置浮动清除样式等*/
+        }
+
+        li ~ li:before { /*E~F：css3选择器，匹配任何在E元素之后的同级F元素*/
+            content: "|";
+            color: red;
+            padding-right: 5px;
+        }
+
+        li a {
+            display: inline; /* 如果需要对a进行宽高处理，则可设置为block或者inline-block */
+            text-decoration: none;
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li><a href="#">title1</a></li>
+    <li><a href="#">title2</a></li>
+    <li><a href="#">title3</a></li>
+    <li><a href="#">title4</a></li>
+    <li><a href="#">title5</a></li>
+</ul>
+
+</body>
+</html> 

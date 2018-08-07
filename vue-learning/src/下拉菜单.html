@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <style type="text/css">
+
+        body {
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            background-color: white;
+            border: 1px solid olive;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        ul, li { margin: 0; padding: 0; }
+
+        /*ul { float: left; }*/
+
+        li { font-weight: bold; float: left; }
+
+        a { color: #000000; text-decoration: none; }
+
+        #nav {
+            width: 600px;
+            margin: 0 auto;     /* 水平居中 */
+            border: 1px solid #f32e37;
+        }
+
+        .list {
+            line-height: 20px;
+            text-align: left;
+            padding: 4px;
+            font-weight: normal;
+        }
+
+        .list a:link {
+            color: #336601;
+            text-decoration: none;
+            float: left;
+            width: 100px;
+            padding: 3px 5px 0px 5px;
+        }
+
+        .list a:visited {
+            color: #336601;
+            text-decoration: none;
+            float: left;
+            padding: 3px 5px 0px 5px;
+            width: 100px;
+        }
+
+        .list a:hover {
+            color: white;
+            float: left;
+            padding: 3px 3px 0px 20px;
+            width: 88px;
+            text-decoration: none;
+            background-color: #539D26;
+        }
+
+        .list a:active {
+            color: white;
+            float: left;
+            padding: 3px 3px 0px 20px;
+            width: 88px;
+            text-decoration: none;
+            background-color: #BD06B4;
+        }
+
+        .menu1 {
+            width: 120px;
+            height: auto;
+            margin: 6px 4px 0 0;
+            border: 1px solid #9CDD75;
+            background-color: #F1FBEC;
+            color: #336601;
+            padding: 6px 0px 0px 0px;
+            cursor: hand;
+            overflow-y: hidden;
+            filter: Alpha(opacity=70);
+            -moz-opacity: 0.7;
+        }
+
+        .menu2 {
+            width: 120px;
+            height: 18px;
+            line-height: 18px;
+            margin: 6px 4px 0 0;
+            background-color: #F5F5F5;
+            color: #999999;
+            padding: 6px 0px 0px 0px;
+            border: 1px solid #EEE8DD;
+            overflow-y: hidden;
+        }
+    </style>
+    <title>下拉菜单实例</title>
+</head>
+
+<body>
+
+<div>
+    浮动的下拉菜单 <a href="http://www.divcss5.com/">CSS</a> 。
+</div>
+<br/>
+
+<!-- 注意有中文与无中文时，上面有差距 -->
+<div id="nav">
+    <ul>
+        <li class="menu2" onMouseOver="this.className='menu1'" onMouseOut="this.className='menu2'">
+            div+css
+            <div class="list">
+                <a href="http://www.divcss5.com/">DIV CSS</a><br/>
+                <a href="#">我的首页</a><br/>
+                <a href="#">我的日志</a><br/>
+                <a href="#">我的日志</a><br/>
+                <a href="#">我的相册</a><br/>
+                <a href="#">我的收藏</a><br/>
+            </div>
+        </li>
+        <li class="menu2" onMouseOver="this.className='menu1'"
+            onMouseOut="this.className='menu2'"><a href="http://www.divcss5.com/html/">HTML入门</a>
+            <div class="list">
+                <a href="http://www.divcss5.com/html/">HTML入门</a><br/>
+                <a href="http://www.divcss5.com/html/h5.html">html是什么</a><br/>
+                <a href="#">我的日志</a><br/>
+                <a href="#">我的相册</a><br/>
+                <a href="#">我的收藏</a><br/>
+            </div>
+        </li>
+        <li class="menu2" onMouseOver="this.className='menu1'"
+            onMouseOut="this.className='menu2'"><a href="http://www.divcss5.com/rumen/">CSS入门</a>
+            <div class="list">
+                <a href="http://www.divcss5.com/">DIVCSS5</a><br/>
+                <a href="#">我的相册</a><br/>
+                <a href="#">我的收藏</a><br/>
+            </div>
+        </li>
+        <li class="menu2" onMouseOver="this.className='menu1'"
+            onMouseOut="this.className='menu2'">
+            <a href="http://www.divcss5.com/css-hack/">CSS HACK</a>
+            <div class="list">
+                <a href="http://www.divcss5.com/">DIV+CSS</a><br/>
+                <a href="#">我的首页</a><br/>
+                <a href="#">我的日志</a><br/>
+                <a href="#">我的相册</a><br/>
+                <a href="#">我的收藏</a><br/>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>等分布局</title>
+    <style type="text/css">
+
+        .parentWrap {
+            overflow: hidden;
+            border: 1px solid #f32e37;
+        }
+
+        .parent {
+            margin-right: -20px;
+            overflow: hidden;
+            background-color: lightgrey;
+        }
+
+        .child {
+            float: left;
+            height: 100px;
+            width: 25%;
+            padding-right: 20px;
+            box-sizing: border-box;
+            background-clip: content-box;
+        }
+
+        .bg1 { background-color: lightblue; }
+
+        .bg2 { background-color: lightgreen; }
+
+        .bg3 { background-color: lightsalmon; }
+
+        .bg4 { background-color: pink; }
+
+        c1 { background-color: #FFAC69; }
+
+        c1 { background-color: #F08176; }
+
+        c1 { background-color: #6CCBC7; }
+
+        c1 { background-color: #CD8CC0; }
+
+        c1 { background-color: #6FA9CE; }
+
+        c1 { background-color: #85B979; }
+
+        c1 { background-color: #A58F8F; }
+
+    </style>
+    <script language="javascript" type="text/javascript">
+        //console.log(window.screen.width + "-" + window.screen.height);
+    </script>
+</head>
+<body>
+
+
+<p>使用padding来实现子元素之间的间距，使用background-clip使子元素padding部分不显示背景</p>
+<div class="parentWrap">
+    <div class="parent">
+        <div class="child bg1">1</div>
+        <div class="child bg2">2</div>
+        <div class="child bg3">3</div>
+        <div class="child bg4">4</div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* DIVCSS5-CSS初始化模板-www.divcss5.com */
+body, div, ul, li,h3{margin:0; padding:0;font-style: normal;font:12px/22px "\5B8B\4F53",Arial, Helvetica, sans-serif}
+/* \5B8B\4F53 代表 宋体，更多中文字体转 Unicode http://www.divcss5.com/jiqiao/j325.shtml */
+ol, ul ,li{list-style:none}
+img {border: 0; vertical-align:middle}
+body{color:#FFF;background:#FFF; text-align:center}
+a{color:#FFF;text-decoration:none}
+a:hover{color:#BA2636;text-decoration:underline}
+/* 根据本实例 设置超链接字体与没有超链接字体演示为白色 */
+
+#wrapper{ margin:0 auto;position:relative;width:610px;height:559px;background:url(bg.jpg) no-repeat}
+/* position:relative是绝对定位关键，父级设置 */
+
+.box1{ position:absolute; width:147px; height:140px; left:198px; top:14px}
+.box2{position:absolute; width:141px; height:186px; left:31px; bottom:17px}
+.box3{position:absolute; width:132px; height:188px; right:28px; bottom:67px}
+/* position:absolute是绝对定位关键，子级设置同时lef right top bottom配合使用 */
+
+h3.title{ height:32px; line-height:32px; font-size:14px; font-weight:bold; text-align:left}
+/* 标题统一设置 */
+ul.list{width:100%; padding-top:8px}
+ul.list li{ width:100%; text-align:left; height:22px;overflow:hidden}
+/* 加了overflow:hidden防止内容过多后自动换行 隐藏超出内容 */ 

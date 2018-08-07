@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>简单应用</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<!-- 文本插值：绑定DOM文件到数据 -->
+<div id="app">
+    {{ message }}
+</div>
+<br>
+
+<!-- 绑定DOM元素属性 -->
+<div id="app-2">
+      <span v-bind:title="message">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+      </span>
+</div>
+<br>
+
+<!-- 控制切换一个元素的显示：绑定DOM结构到数据 -->
+<div id="app-3">
+    <p v-if="seen">现在你看到我了</p>
+</div>
+<br>
+
+<!-- 绑定数组的数据来渲染一个项目列表 -->
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+<br>
+
+<!--处理用户输入-->
+<div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">逆转消息</button>
+</div>
+<br>
+
+<!--实现双向绑定-->
+<div id="app-6">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+<br>
+
+<!-- 最简单的组件化 -->
+<div id="app-7">
+    <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+    </ol>
+</div>
+
+<script type="text/javascript">
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue! 渐进式'
+        }
+    });
+
+    var app2 = new Vue({
+        el: '#app-2',
+        data: {
+            message: '页面加载于 ' + new Date().toLocaleString()
+        }
+    });
+
+    var app3 = new Vue({
+        el: '#app-3',
+        data: {
+            seen: true
+        }
+    });
+
+    var app4 = new Vue({
+        el: '#app-4',
+        data: {
+            todos: [
+                {text: '学习JavaScript'},
+                {text: '学习Vue'},
+                {text: '整个牛项目'}
+            ]
+        }
+    });
+
+    var app5 = new Vue({
+        el: '#app-5',
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reverseMessage: function () {
+                this.message = this.message.split('').reverse().join('')
+            }
+        }
+    });
+
+    var app6 = new Vue({
+        el:'#app-6',
+        data:{
+            message:'撸起袖子加油干'
+        }
+    });
+
+    Vue.component('todo-item',{
+        props:['todo'],
+        template:'<li>{{todo.text}}</li>'
+    });
+
+    var app7 = new Vue({
+        el:'#app-7',
+        data:{
+            groceryList:[
+                {id:0,text:'蔬菜'},
+                {id:1,text:'奶酪'},
+                {id:2,text:'随便其他人吃的东西'},
+            ]
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>组件事件处理(消息传递并回传数据)</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="message-event-example" class="demo">
+    <p v-for="msg in messages">{{ msg }}</p>
+    <button-message v-on:message="handleMessage"></button-message>
+</div>
+
+<script>
+
+  Vue.component('button-message', {
+    template: `<div>
+    <input type="text" v-model="message" />
+    <button v-on:click="handleSendMessage">Send</button>
+  </div>`,
+    data: function () {
+      return {
+        message: 'test message'
+      }
+    },
+    methods: {
+      handleSendMessage: function () {
+        this.$emit('message', {message: this.message})
+      }
+    }
+  })
+
+  new Vue({
+    el: '#message-event-example',
+    data: {
+      messages: []
+    },
+    methods: {
+      handleMessage: function (payload) {
+        this.messages.push(payload.message)
+      }
+    }
+  })
+
+</script>
+</body>
+</html>

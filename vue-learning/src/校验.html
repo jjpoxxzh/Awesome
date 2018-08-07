@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>临时</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            margin: 10px 15px;
+        }
+
+        .left {
+            display: inline-block;
+        }
+
+        .middle {
+            display: inline-block;
+        }
+
+        .right {
+            display: inline-block;
+            color: red;
+        }
+    </style>
+    <script src="car_validate.js"></script>
+    <script>
+    </script>
+
+
+</head>
+<body>
+
+
+<form name="example_form" action="#" method="POST" novalidate>
+
+    <div>
+        <labe class="left" for="req">车牌号</labe>
+        <div class="middle"><input name="req" id="req" placeholder="必填字段"></div>
+        <div class="right" name="result"></div>
+    </div>
+
+    <br/>
+    <div>
+        <labe class="left" for="phone">手机号</labe>
+        <div class="middle"><input name="phone" id="phone" placeholder="必填字段"></div>
+        <div class="right" name="result"></div>
+    </div>
+
+    <br/>
+    <button type="submit" name="submit">Submit</button>
+</form>
+
+<script>
+    var validator = new FormValidator('example_form', [{
+        name: 'req',
+        rules: 'required|valid_chepai'
+    }, {
+        name: 'phone',
+        rules: 'required|valid_mobilephone'
+    }], function (errors) {
+        if (errors.length > 0) {
+            var resultNode = document.getElementsByName("result")
+            for (var i = 0; i < errors.length; i++) {
+//                var str = "result_"+errors[i].name;
+//                document.getElementsByName(str).innerHTML = errors[i].message
+                resultNode[i].innerHTML = errors[i].message
+
+                //console.log(errors[i])
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>使用浮动来创建水平菜单</title>
+    <style type="text/css">
+
+        p {border: 1px solid #f32e37;}
+
+        ul {
+            float: left;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+
+        }
+
+        a {
+            float: left;
+            width: 7em;
+            text-decoration: none;
+            color: white;
+            background-color: purple;
+            padding: 0.2em 0.6em;
+            border-right: 1px solid white;
+        }
+
+        a:hover { background-color: #ff3300; }
+
+        li {display:inline}     /* li默认为list-item，设置inline时只是宽高变成auto，但依然为0 */
+
+    </style>
+</head>
+<body>
+
+    <!-- ul浮动，li不浮动，a浮动。li视觉上不包括a，与ul同级的还有p元素，所以ul视觉上会在body内。
+    如果没有p，则div为空，ul视觉上不在div内
+    此处水平菜单的关键在于li不可见，a通过flat向左浮动，从而形成水平效果 -->
+<ul>
+    <li><a href="#">Link one</a></li>
+    <li><a href="#">Link two</a></li>
+    <li><a href="#">Link three</a></li>
+    <li><a href="#">Link four</a></li>
+</ul>
+
+<p>
+    在上面的例子中，我们把 ul 元素和 a 元素浮向左浮动。li 元素显示为行内元素（元素前后没有换行）。这样就可以使列表排列成一行。
+    ul 元素的宽度是 100%，列表中的每个超链接的宽度是 7em（当前字体尺寸的 7 倍）。我们添加了颜色和边框，以使其更漂亮。
+</p>
+
+</body>
+</html> 

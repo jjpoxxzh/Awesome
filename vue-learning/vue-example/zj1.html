@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>简单的组件</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<br>
+<div id="example-1">
+    <input v-model="parentMsg">
+    <br>
+    <child v-bind:my-message="parentMsg"></child>
+</div>
+<br>
+
+<script>
+
+  Vue.component('child', {
+    // 在 JavaScript 中使用 camelCase
+    props: ['myMessage'],
+    template: '<span>{{ myMessage }}</span>'
+  })
+
+  new Vue({
+    el: '#example-1',
+    data: {
+      parentMsg: 'Message from parent'
+    }
+  })
+
+</script>
+</body>
+</html>

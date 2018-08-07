@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>块级元素与内联函数</title>
+    <style type="text/css">
+
+        /* 块级元素显示为内联元素；inline不可设置元素宽高，inline-block可设置宽高 */
+        p { display: inline; }
+
+        /* 元素不会显示 */
+        div { display: none; }
+
+        /* 内联元素显示为块级元素 */
+
+        span { display: block; }
+
+    </style>
+</head>
+<body>
+
+<p>本例中的样式表把段落元素设置为内联元素。</p>
+<p>而 div 元素不会显示出来！</p>
+<div>div 元素的内容不会显示出来！</div>
+
+<br>
+<br>
+
+<span>本例中的样式表把 span 元素设置为块级元素。</span>
+<span>两个 span 元素之间产生了一个换行行为。</span>
+
+</body>
+</html> 

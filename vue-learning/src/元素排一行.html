@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>元素水平排列</title>
+    <style type="text/css">
+        div.test {
+            width: 500px;
+            height: 200px;
+            margin: 10px;
+            border: 4px solid #ebbccb;
+        }
+
+        div.test1 div {
+            width: 100px;
+            height: 50px;
+            border: 2px solid #ccc;
+            margin: 10px;
+            display: inline-block; /*注意此处采用行内元素的方式*/
+        }
+
+        div.test1 p {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+            border: 1px solid #f32e37;
+        }
+
+        div.test2 div {
+            width: 100px;
+            height: 50px;
+            border: 2px solid #ccc;
+            margin: 10px;
+            float: left; /*注意此处改变默认文档流，采用浮动的方式*/
+        }
+
+        div.test2 p {
+            height: 60px;
+            line-height: 60px;
+            border: 1px solid #f32e37;
+        }
+    </style>
+</head>
+<body>
+<div class="test test1">
+    <p>方式一：display:inline-block;</p>
+    <br>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div class="test test2">
+    <p>方式二：float:left;</p>
+    <br>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

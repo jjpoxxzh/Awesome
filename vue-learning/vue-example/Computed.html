@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>反转字符串（计算属性、侦听器、方法的不同实现）</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="example">
+    <p>初始值：<input v-model="message"></p>
+    <p>计算属性值："{{ reversedMessage }}"</p>
+    <button @click="reversedMsg">反转</button>
+    <p>方法调用值：{{ reversedMsg() }}</p>
+    <p>侦听器管理的数据属性值："{{ watchMessage }}"</p>     <!-- 由侦听器操作 -->
+</div>
+
+<script type="text/javascript">
+
+  var vm = new Vue({
+    el: '#example',
+    data: {
+      message: 'Hello',
+      watchMessage: ''
+    },
+    computed: {  // 计算属性
+      reversedMessage: function () {  // reversedMessage的getter
+        console.log('--计算属性--')
+        // this指向vm实例
+        return this.message.split('').reverse().join('');
+      }
+    },
+    methods: {
+      reversedMsg: function () {
+        console.log('--方法--')
+        // this指向vm实例
+        return this.message.split('').reverse().join('');
+      }
+    },
+    watch: {		// 侦听器
+      message: function (newMessage, oldMessage) {
+        console.log('--侦听器--',newMessage,oldMessage)
+        // 在侦听到message发生变化时就回调。
+        this.watchMessage = this.message.split('').reverse().join('')
+      }
+    }
+  });
+
+  console.log(typeof vm.reversedMsg)
+</script>
+</body>
+</html>
