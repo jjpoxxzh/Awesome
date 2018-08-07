@@ -1,0 +1,16 @@
+{
+  "name": "adapter",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.3.1",
+    "react-native": "^0.55.4"
+  }
+}

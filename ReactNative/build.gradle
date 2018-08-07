@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            //url "$rootDir/../node_modules/react-native/android"
+            /**
+             * 项目根目录的上级目录下node_modules目录，这个目录是不存在的(因为这是往原生项目中添加RN模块)，
+             * 因此会检索不致react-native库方件，而使用jcenter中的一个0.21.0版本的。
+             */
+            url "$rootDir/node_modules/react-native/android"  // 正确。$rootDir指项目根目录，包含有node_modules目录
+            //url "$projectDir/node_modules/react-native/android"  // 正确。$projectDir指项目目录，包含有node_modules目录
+
+            //url "node_modules/react-native/android"      // 错误。url方式必须没有以../开头，无法正确识别，则去repoitories中检索，找不到则报错
+            //url "./node_modules/react-native/android"      // 错误。url以./开头，无法正确识别，则去repoitories中检索，找不到则报错
+            //url "../node_modules/react-native/android"      // 正确。url以../开头，表示当前目录下的node_modules目录
+            //url "../../android"      // 正确。url以../开头，表示当前目录的上级目录下的android目录
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

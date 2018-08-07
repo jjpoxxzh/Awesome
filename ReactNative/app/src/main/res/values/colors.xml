@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- 背景色 -->
+	<color name="common_cotent_bg1">#bebebe</color>
+	<color name="common_cotent_bg2">#ebebeb</color>
+	<color name="common_cotent_bg3">#f5f5f5</color>
+
+	<!-- 7种随机颜色 -->
+	<color name="color_1">#FFAC69</color>
+	<color name="color_2">#F08176</color>
+	<color name="color_3">#6CCBC7</color>
+	<color name="color_4">#CD8CC0</color>
+	<color name="color_5">#6FA9CE</color>
+	<color name="color_6">#85B979</color>
+	<color name="color_7">#A58F8F</color>
+</resources>
