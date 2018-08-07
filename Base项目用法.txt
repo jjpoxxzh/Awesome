@@ -1,0 +1,38 @@
+﻿RN基础项目修改项目名称及包名的方法
+
+Android：
+	(1)项目目录下
+	package.json、app.json、index.android.js、index.ios.js修改项目名称
+	(2).\android
+	添加local.porperties
+	settings.gradle修改项目名称
+	build.gradle修改com.android.tools.build:gradle依赖
+	如果编译时内存不够，就修改gradle.properties，打开org.gradle.jvmargs设置
+	(3).\android\gradle\wrapper
+	gradle-wrapper.properties修改gradle包的版本
+	(4).\android\app
+	build.gradle修改相关库、工具版本、applicationId，添加签名信息
+	build.gradle文件应用了“../../node_modules/react-native/react.gradle”的设置，如果有对编译默认选项有所更改，比如修改了entryFile（有路径则需要加上路径）、bundleAssetName等，则需要修改react.gradle文件。
+	BUCK修改两个package为正确的包名
+	(5).\android\app\src\main\
+	修改AndroidManifest.xml中的包名
+	修改java目录相应包层次信息
+	MainActivity.java、MainApplication.java修改对应包名及getMainComponentName()方法返回值，注意编码编码格式，如果有中文则要将文件编码改为utf-8
+	(6).\android\app\src\main\res
+	strings.xml修改app_name，注意文件编码格式。
+	(7)gradle clean清理后再编译
+
+
+IOS：
+	(1).\ios
+	修改5个子目录中的名称
+	(2).\ios\项目
+	AppDelegate.m 修改moduleName
+	Info.plist 修改键 CFBundleDisplayName 对应的键值
+	Base.lproj\LaunchScreen.xib 修改标记<label  text="项目"/>
+	(2).\ios\项目.xcodeproj
+	project.pbxproj 通过关键词高亮的方法来查找“项目”，将其修改。这个文件需要修改的地方比较多。
+	(2).\ios\项目.xcodeproj\xcshareddata\xcschemes
+	项目.xcscheme 修改名称，并修改相应关键词。此文件需要修改的地方较多
+	项目-tvOS.xcscheme 修改名称，并修改container:项目.xcodeproj
+
