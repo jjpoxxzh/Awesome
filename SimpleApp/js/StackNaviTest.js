@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-    AppRegistry,
     Button,
     StyleSheet,
     Text,
@@ -11,17 +10,17 @@ import {StackNavigator} from 'react-navigation';
 
 
 // 第一个界面
-class HomeScreen extends React.Component {
+class HomeScreen extends Component {
 
     static navigationOptions = {
-        title: '欢迎页',
+        title: 'Home',
     };
 
     render() {
         const {navigate} = this.props.navigation;
         return (
-            <View>
-                <Text style={{height: 200, backgroundColor: '#bebebe'}}>Hello, Chat App!</Text>
+            <View style={stack_styles.container}>
+                <Text style={{width:120,height: 80, backgroundColor: 'white'}}>Hello, Chat App!</Text>
                 <Button
                     onPress={() => navigate('Chat', {user: 'Lucy'})}
                     title="联系Lucy"
@@ -41,14 +40,23 @@ class ChatScreen extends React.Component {
     render() {
         const {params} = this.props.navigation.state;
         return (
-            <View>
+            <View style={stack_styles.container}>
                 <Text style={{height: 200, backgroundColor: '#bebebe'}}>正在与{params.user}交谈</Text>
             </View>
         );
     }
 }
 
-const stack = StackNavigator({
+const stack_styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFAC69',
+    },
+});
+
+export const stack = StackNavigator({
     Home: {screen: HomeScreen},
     Chat: {screen: ChatScreen},
 });

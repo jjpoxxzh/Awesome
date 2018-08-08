@@ -6,8 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * Copied and only slightly modified from:
- * https://raw.githubusercontent.com/facebook/react-native/master/ReactAndroid/src/main/java/com/facebook/react/devsupport/DoubleTapReloadRecognizer.java
+ * Copied and only slightly modified from: com.facebook.react.devsupport.DoubleTapReloadRecognizer
  */
 public class DoubleTapRecognizer {
     private static final long DOUBLE_TAP_DELAY = 200;

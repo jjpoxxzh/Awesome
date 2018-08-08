@@ -8,12 +8,7 @@ import {
     View
 } from 'react-native';
 
-import {TAG} from './styleconfig';
 
-
-/**
- * 此实例用于测试
- */
 export default class Main extends Component {
 
 
