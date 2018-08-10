@@ -1,9 +1,9 @@
 *.iml
-/.gradle
-/.idea
+.gradle
+.idea
+*.vscode
 /local.properties
-/build
+build
 /captures
 /node_modules
-/app/build
-/app/.gradle
+.DS_Store
