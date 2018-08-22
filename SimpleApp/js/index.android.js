@@ -129,6 +129,8 @@ import NativeTest from './NativeTest';
 // Native代码测试（一个详细的原生模块）
 import NativeTest2 from './NativeTest2';
 
+import WXNativeTest from './WXNativeTest';
+
 // 联系人
 import LetterList from './nativemodule/Contacts';
 import LottieAnimatedExample from './LottieAnimatedExample';

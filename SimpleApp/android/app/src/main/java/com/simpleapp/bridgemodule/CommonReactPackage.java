@@ -22,6 +22,7 @@ public class CommonReactPackage implements ReactPackage {
         list.add(new ToastJavaModule(reactContext));
         list.add(new ImagePickerModule(reactContext));
         list.add(new ImageFetchModule(reactContext));
+        list.add(new WeChatModule(reactContext));
         return list;
     }
 
