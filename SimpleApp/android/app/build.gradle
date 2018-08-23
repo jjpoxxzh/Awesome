@@ -126,10 +126,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file(RFAPP_RELEASE_STORE_FILE)
-            storePassword RFAPP_RELEASE_STORE_PASSWORD
-            keyAlias RFAPP_RELEASE_KEY_ALIAS
-            keyPassword RFAPP_RELEASE_KEY_PASSWORD
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword MYAPP_RELEASE_STORE_PASSWORD
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword MYAPP_RELEASE_KEY_PASSWORD
         }
     }
     splits {
@@ -144,7 +144,8 @@ android {
     buildTypes {
         // 对 debug 类型进行配置，applicationId后加“.debug”
         debug {
-            applicationIdSuffix ".debug"
+            //applicationIdSuffix ".debug"
+            signingConfig signingConfigs.release
         }
         // 创建jnidebug 类型，它复制于buildTypes.debug
 //        jnidebug.initWith(buildTypes.debug)
@@ -160,13 +161,9 @@ android {
     // 产品的风格定制
     productFlavors {
         lj {
-            applicationId "com.simpleapplj"
+            applicationId "com.dscf.a"
             versionCode 20
         }
-        app_xiaomi {}
-        app_oppo {}
-        app_vivo {}
-        app_huawei {}
     }
 
 

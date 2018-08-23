@@ -133,7 +133,7 @@ export default class WXNativeTest extends Component {
                 mediaTagName: 'email signature',
                 messageAction: undefined,
                 messageExt: undefined,
-                imageUrl: 'http://www.ncloud.hk/email-signature-262x100.png'
+                imageUrl: 'https://img.dsimg.cn/goods/201806/BCTRN2Q0AMY6.png'
             });
             console.log('share image url to time line successful:', result);
         } catch (e) {
