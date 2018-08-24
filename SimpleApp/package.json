@@ -12,6 +12,7 @@
 		"react-native": "^0.55.4",
 		"react-native-button": "^2.3.0",
 		"react-native-modalbox": "^1.6.0",
+		"react-native-qq": "^2.0.5",
 		"react-native-safe-module": "^1.2.0",
 		"react-native-scrollable-tab-view": "^0.8.0",
 		"react-native-slider": "^0.11.0",
