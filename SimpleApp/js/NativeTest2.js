@@ -10,14 +10,13 @@ import {
     View
 } from 'react-native';
 
-import PT from 'prop-types';
-
-import {color_1, color_2, screen} from './styleconfig';
+import * as globalConfig from './styleconfig';
 
 import {Short, Long, show, pass, operate, tell} from './nativemodule/ToastExample2';
 import ImageExample from './nativemodule/ImageExample';
-// 调用原生视图
+// 原生圆角视图
 import CircleImageView from './nativemodule/CircleImageView';
+// 原生TextView视图
 import ToDoItemView from './nativemodule/ToDoItemView';
 
 const images1 = [{uri: 'http://www.w3school.com.cn/ui2017/logo-96.png'}];
@@ -49,16 +48,6 @@ class Item extends Component {
  */
 export default class NativeTest2 extends Component {
 
-    static defaultProps = {
-        text1: "原生方法",
-        text2: "原生方法——Callback",
-        text3: "原生方法——Promise",
-        text4: "原生方法——通知",
-    };
-    static propTypes = {
-        text2: PT.string.isRequired,
-    };
-
     constructor(props) {
         super(props);
         this.state = {
@@ -88,12 +77,10 @@ export default class NativeTest2 extends Component {
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
                 }}>
-                    <Item text="原生方法" onclick={() => {
+                    <Item text="原生方法——常规调用" onclick={() => {
                         this.toast();
                     }} bgcolor="powderblue"/>
-                    <Item text={this.state.item2_text} ref={item => {
-                        this.item2 = item
-                    } } onclick={() => {
+                    <Item text="原生方法——Callback" onclick={() => {
                         this.callback();
                     }} bgcolor={this.state.item2_bg_color}/>
                     <Item text="原生方法——Promise" onclick={() => {
@@ -101,16 +88,16 @@ export default class NativeTest2 extends Component {
                     }} bgcolor="steelblue"/>
                     <Item text="原生方法——通知" onclick={() => {
                         this.tellToNative();
-                    }} bgcolor={color_1}/>
-                    <Item text="从startActivityForResult中获取结果" onclick={() => {
+                    }} bgcolor={globalConfig.color_1}/>
+                    <Item text="调用系统相册获取一张图片" onclick={() => {
                         this.getImageFromGallery();
-                    }} bgcolor={color_2}/>
+                    }} bgcolor={globalConfig.color_2}/>
 
                 </View>
                 <CircleImageView style={{width: 150, height: 150}}
                                  src={images1} borderRadius={5}
                                  resizeMode="cover"/>
-                <ToDoItemView style={{width: screen.width, height: 50}} text="测试文本" textSize={22}
+                <ToDoItemView style={{width: globalConfig.width, height: 50}} text="测试文本" textSize={22}
                               isAlpha={false}
                               onChangeMessage={() => {
                                   this.doSomething();
@@ -130,7 +117,6 @@ export default class NativeTest2 extends Component {
             flag: true
         };
         show(arr, Short);
-        // show(arr, Long);
     }
 
     /**
@@ -143,14 +129,16 @@ export default class NativeTest2 extends Component {
 
     success(value) {
         this.setState({
-            item2_bg_color: color_1, item2_text: this.props.text2 + "成功：" + value
+            item2_bg_color: globalConfig.color_1,
         });
+        alert("成功");
     }
 
     fail(value) {
         this.setState({
-            item2_bg_color: "skyblue", item2_text: this.props.text2 + "失败：" + value
+            item2_bg_color: "skyblue",
         });
+        alert("失败");
     }
 
     /**

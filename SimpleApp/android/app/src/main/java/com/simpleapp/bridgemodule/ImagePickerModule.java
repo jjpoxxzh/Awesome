@@ -47,7 +47,9 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Lif
 
     public ImagePickerModule(ReactApplicationContext reactContext) {
         super(reactContext);
+        // 注册含 onActivityResult 回调方法的事件监听
         reactContext.addActivityEventListener(baseActivityEventListener);
+        // 注册含生命周期方法的事件监听
         reactContext.addLifecycleEventListener(this);
     }
 
@@ -58,24 +60,17 @@ public class ImagePickerModule extends ReactContextBaseJavaModule implements Lif
 
     @ReactMethod
     public void pickImage(final Promise promise) {
-
         Activity currentActivity = getCurrentActivity();
-
         if (currentActivity == null) {
             promise.reject(E_ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist");
             return;
         }
-
         // Store the promise to resolve/reject when picker returns data
         mPickerPromise = promise;
-
         try {
             final Intent galleryIntent = new Intent(Intent.ACTION_PICK);
-
             galleryIntent.setType("image/*");
-
             final Intent chooserIntent = Intent.createChooser(galleryIntent, "Pick an image");
-
             currentActivity.startActivityForResult(chooserIntent, IMAGE_PICKER_REQUEST);
         } catch (Exception e) {
             mPickerPromise.reject(E_FAILED_TO_SHOW_PICKER, e);

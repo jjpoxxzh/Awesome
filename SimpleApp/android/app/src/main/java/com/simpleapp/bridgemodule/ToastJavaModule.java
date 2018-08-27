@@ -76,12 +76,12 @@ class ToastJavaModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void pass(int type, Callback successCallback, Callback errorCallback) {
         int value = (int) (Math.random() * 10) + 1;
+        System.out.println("传入值："+type + "，随机值：" + value);
         if (value != type) {
             successCallback.invoke(value);
         } else {
             errorCallback.invoke("二者相等");
         }
-        System.out.println(type + "-" + value);
     }
 
     /**
@@ -93,7 +93,7 @@ class ToastJavaModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void operate(int type, Promise promise) {
         int value = (int) (Math.random() * 10) + 1;
-        System.out.println(type + "-" + value);
+        System.out.println("传入值："+type + "，随机值：" + value);
         if (type >= value) {
             WritableMap map = Arguments.createMap();
             map.putString("name", "lj");
