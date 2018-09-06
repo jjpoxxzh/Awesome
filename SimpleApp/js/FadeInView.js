@@ -12,7 +12,6 @@ export default class FadeInView extends Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             fadeAnim: new Animated.Value(0),          // 透明度初始值设为0
         };
@@ -24,7 +23,7 @@ export default class FadeInView extends Component {
             {
                 toValue: 1,     // 透明度最终变为1，即完全不透明
                 duration: 1500,     // 动画持续的时间
-                easing: Easing.back,
+                easing: Easing.back(),
                 useNativeDriver: true,      // 启用原生驱动
             }
         ).start();

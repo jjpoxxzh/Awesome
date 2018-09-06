@@ -110,13 +110,13 @@ def enableSeparateBuildPerCPUArchitecture = true
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.3"
 
     defaultConfig {
         applicationId "com.simpleapp"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         // 需要在x86模拟器上运行时加上"x86"
@@ -143,9 +143,9 @@ android {
     // 构建的类型
     buildTypes {
         // 对 debug 类型进行配置，applicationId后加“.debug”
-        debug {
-            applicationIdSuffix ".debug"
-        }
+//        debug {
+//            applicationIdSuffix ".debug"
+//        }
         // 创建jnidebug 类型，它复制于buildTypes.debug
 //        jnidebug.initWith(buildTypes.debug)
 //        jnidebug {
@@ -164,8 +164,6 @@ android {
             versionCode 20
         }
     }
-
-
 
 //	productFlavors.all { flavor ->
 //		println name
@@ -201,8 +199,8 @@ android {
 
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile "com.android.support:appcompat-v7:25.3.1"
-    compile "com.android.support:support-v4:25.3.1"
+    compile "com.android.support:appcompat-v7:26.0.1"
+    compile "com.android.support:support-v4:26.0.1"
     compile 'com.airbnb.android:lottie:2.2.0'
     compile "com.facebook.react:react-native:+"  // 从 node_modules 目录下读取
 }

@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
 import {
     Button,
+    Dimensions,
     FlatList,
     RefreshControl,
+    Platform,
     StyleSheet,
+    StatusBar,
     Text,
     View
 } from 'react-native';
@@ -11,6 +14,9 @@ import {
 // import infoLog from 'react-native/Libraries/Utilities/infoLog';
 const infoLog = require('react-native/Libraries/Utilities/infoLog');
 
+const screen = Dimensions.get('window');
+
+const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 20;
 /**
  * 测试FlatList在不足一屏时加更多数据时，引发的列表数据加载异常的问题。
  * FlatList如果动态增加数据，且数据不足一屏，与ListView一样，会发生自动调用onEndReached()方法的问题。
@@ -135,7 +141,7 @@ export default class FlatListLoadMore extends Component {
 
 
     render() {
-        let len = (globalstyle.deviceHeight - 25 - 50 - globalstyle.statusBarHeight) / 44;
+        let len = (screen.height - 25 - 50 - statusBarHeight) / 44;
         console.log("FlatList填充满屏幕的size为：" + len);
         len = parseInt(len);
         this.flatListRenderCount++;

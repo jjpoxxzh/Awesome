@@ -4,6 +4,7 @@ import {
     Easing,
     LayoutAnimation,
     Text,
+    View
 } from 'react-native';
 
 import FadeInView from './FadeInView';
@@ -37,9 +38,11 @@ export default class AnimationTest extends Component {
 
     render() {
         return (
-            <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue', margin: 100}}>
-                <Text style={{fontSize: 28, textAlign: 'center'}}>Fading in</Text>
-            </FadeInView>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue', margin: 100}}>
+                    <Text style={{fontSize: 28, textAlign: 'center'}}>Fading in</Text>
+                </FadeInView>
+            </View>
         );
     }
 }
