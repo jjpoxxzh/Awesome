@@ -56,11 +56,11 @@ const stack_styles = StyleSheet.create({
     },
 });
 
-export const stack = StackNavigator({
+export default StackNavigator({
     Home: {screen: HomeScreen},
     Chat: {screen: ChatScreen},
 });
 
-module.exports = {
-    simple: stack,
-};
+// module.exports = {
+//     simple: stack,
+// };
