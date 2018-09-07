@@ -70,6 +70,8 @@ import RefreshControlExample from './RefreshControlExample';
 import  StackNaviTest from './StackNaviTest';
 const stacknav = StackNaviTest.simple;
 
+import  StackNaviTest2 from './StackNaviTest2';
+
 // 导航栏的简单应用TabNavigator
 import  TabNaviTest from './TabNaviTest';
 const tabnav = TabNaviTest.simple;
@@ -133,4 +135,7 @@ import NativeTest2 from './NativeTest2';
 import LetterList from './nativemodule/Contacts';
 import LottieAnimatedExample from './LottieAnimatedExample';
 
-AppRegistry.registerComponent('SimpleApp', () => MainTest);
+
+import ParallaxTest from './ParallaxTest';
+
+AppRegistry.registerComponent('SimpleApp', () => StackNaviTest2);

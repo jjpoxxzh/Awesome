@@ -84,12 +84,18 @@ import com.alibaba.fastjson.JSON
 project.ext.react = [
         bundleAssetName: "simple.android.bundle",
         entryFile: "js/index.android.js",
-        bundleInDebug: false,
+        bundleInDebug: true,
         bundleInRelease: true,
 		inputExcludes: ["android/**", "ios/**", ".idea/**", ".vscode/**"]
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+
+
+project.ext.vectoricons = [
+        iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Name of the font files you want to copy
+]
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -203,6 +209,7 @@ dependencies {
     compile "com.android.support:support-v4:26.0.1"
     compile 'com.airbnb.android:lottie:2.2.0'
     compile "com.facebook.react:react-native:+"  // 从 node_modules 目录下读取
+    compile project(':react-native-vector-icons')
 }
 
 // Run this once to be able to run the application with BUCK（一旦启用了开启BUCK就运行此任务）
