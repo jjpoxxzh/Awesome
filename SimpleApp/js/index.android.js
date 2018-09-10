@@ -136,7 +136,8 @@ import NativeTest2 from './NativeTest2';
 import LetterList from './nativemodule/Contacts';
 import LottieAnimatedExample from './LottieAnimatedExample';
 
-
+// 下拉视图
 import ParallaxTest from './ParallaxTest';
+import Talks from './Talks';
 
-AppRegistry.registerComponent('SimpleApp', () => StackNaviTest3);
+AppRegistry.registerComponent('SimpleApp', () => Talks);

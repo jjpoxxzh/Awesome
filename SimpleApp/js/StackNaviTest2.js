@@ -9,11 +9,6 @@ import {StackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-var THUMB_URLS = [
-    require('./img/Rectangle@3x.png'),
-    require('../Thumbnails/dislike.png'),
-];
-
 class HomeScreen extends React.Component {
     render() {
         return (
