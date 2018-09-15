@@ -8,7 +8,6 @@
 /android/build
 /android/app/build
 /android/captures
-/node_modules
 
 # OSX
 #
