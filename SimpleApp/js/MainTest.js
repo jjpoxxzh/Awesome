@@ -13,8 +13,8 @@ export default class Main extends Component {
 
 
     testString() {
-        console.log(StatusBar.currentHeight)
-        var arr = [{name: 'a'}, {name: 'b'}, {name: 'c'}, {name: 'd'}]
+        console.log(StatusBar.currentHeight);
+        var arr = [{name: 'a'}, {name: 'b'}, {name: 'c'}, {name: 'd'}];
         for (var i in arr) {
             console.log(i, arr[i]);
         }

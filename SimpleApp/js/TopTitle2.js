@@ -51,10 +51,12 @@ const tts = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
+        borderWidth: 1,borderColor: '#f32e37',
     },
     leftButton: {
-        backgroundColor: '#beb'
+        backgroundColor: '#beb',
+        borderWidth: 1,borderColor: '#f32e37',
     },
     titleText: {
         textAlign: 'center',
@@ -66,13 +68,18 @@ const tts = StyleSheet.create({
         backgroundColor: '#beb'
     },
     right: {
+        width: 70,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        backgroundColor: '#beb'
+        borderWidth: 1,borderColor: '#f32e37',
+    },
+    rightButton1: {
+    },
+    rightButton2: {
     },
     image: {
-        height: 40,
-        width: 40,
+        height: 25,
+        width: 25,
     }
 });

@@ -48,10 +48,12 @@ const tts = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        borderWidth: 1,borderColor: '#f32e37'
     },
     leftButton: {
         position: 'absolute',
         left: 8,
+        borderWidth: 1,borderColor: '#f32e37'
     },
     titleText: {
         textAlign: 'center',
@@ -65,13 +67,15 @@ const tts = StyleSheet.create({
     rightButton1: {
         position: 'absolute',
         right: 50,
+        borderWidth: 1,borderColor: '#f32e37'
     },
     rightButton2: {
         position: 'absolute',
         right: 8,
+        borderWidth: 1,borderColor: '#f32e37'
     },
     image: {
-        height: 40,
-        width: 40,
+        height: 25,
+        width: 25,
     }
 });

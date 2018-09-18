@@ -14,14 +14,16 @@ import MainTest from './js/MainTest';
 // FlexBox布局测试(含TitleBar)
 import FlexboxTest from './js/FlexboxTest';
 
+// 弹性布局、相对布局、绝对布局的对比
+import LayoutTest from './js/LayoutTest';
+
 // 属性及布局（含标题栏的测试）
 import PropTest from './js/PropTest';
 
 // 属性及布局展示（Text文本居中显示效果）
 import PropTest2 from './js/PropTest2';
 
-// 相对布局、绝对布局
-import LayoutTest from './js/LayoutTest';
+
 
 // 样式覆盖(后定义的样式会覆盖先定义的样式)
 import StyleTest from './js/StyleTest';
