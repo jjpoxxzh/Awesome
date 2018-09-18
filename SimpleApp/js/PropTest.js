@@ -16,11 +16,11 @@ const {width} = Dimensions.get('window');
  */
 class Greeting extends Component {
 
-    static defaultProps = {
-        name: '大佬',
-    };
     static propTypes = {
         name: PropTypes.string,
+    };
+    static defaultProps = {
+        name: '大佬',
     };
 
     render() {
@@ -39,14 +39,13 @@ class Greeting extends Component {
  * Header 组件
  */
 class Header extends Component {
-
-    static defaultProps = {
-        index: 0,
-        data: []
-    };
     static propTypes = {
         index: PropTypes.number,
         data: PropTypes.array
+    };
+    static defaultProps = {
+        index: 0,
+        data: []
     };
 
     constructor(props) {

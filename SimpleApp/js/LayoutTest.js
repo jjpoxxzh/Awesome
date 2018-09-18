@@ -26,7 +26,7 @@ export default class LayoutTest extends Component {
                 <Text>绝对布局（absolute）</Text>
                 <View style={[styles.container, {flexDirection: 'column'}]}>
                     <View style={styles.box1}/>
-                    <View style={[styles.box2, {position: 'absolute', top: 50, left: 25,}]}></View>
+                    <View style={[styles.box2, {position: 'absolute', top: 25, left: 25,}]}></View>
                     <View style={[styles.box3, {position: 'absolute', bottom: 0, right: 0}]}/>
                 </View>
             </View>

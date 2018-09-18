@@ -30,11 +30,12 @@ export default class FadeInView extends Component {
     }
 
     render() {
+        let {fadeAnim} = this.state;
         return (
             <Animated.View      // 可动画化的视图组件
                 style={{
                     ...this.props.style,    // 样式传递
-                    opacity: this.state.fadeAnim,   // 将透明度opacity指定为变量值，则会由0变为1，即全透明变成不透明
+                    opacity: fadeAnim,   // 将透明度opacity指定为变量值，则会由0变为1，即全透明变成不透明
                 }}
             >{this.props.children}</Animated.View>
         );

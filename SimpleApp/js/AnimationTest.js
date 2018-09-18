@@ -3,11 +3,13 @@ import {
     Animated,
     Easing,
     LayoutAnimation,
+    StyleSheet,
     Text,
     View
 } from 'react-native';
 
 import FadeInView from './FadeInView';
+import FadeInView2 from './FadeInView2';
 
 /**
  * 动画实例
@@ -38,11 +40,47 @@ export default class AnimationTest extends Component {
 
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue', margin: 100}}>
-                    <Text style={{fontSize: 28, textAlign: 'center'}}>Fading in</Text>
+            <View style={styles.container}>
+                <FadeInView style={{
+                    width: 250,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'powderblue',
+                    borderWidth: 1,
+                    borderColor: '#f32e37',
+                }}>
+                    <Text style={styles.tv}>Fading in</Text>
                 </FadeInView>
+                <FadeInView2 style={{
+                    width: 250,
+                    height: 50,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    backgroundColor: 'powderblue',
+                    borderWidth: 1,
+                    borderColor: '#f32e37',
+                    position: 'absolute',
+                    top: 0,
+                    left: 50,
+                }}>
+                    <Text style={styles.tv}>Fading in</Text>
+                </FadeInView2>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    fade: {},
+    tv: {
+        fontSize: 28,
+        textAlign: 'center',
+        textAlignVertical: 'center',
+    },
+});
