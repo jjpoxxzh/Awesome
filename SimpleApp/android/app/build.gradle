@@ -82,10 +82,8 @@ import com.alibaba.fastjson.JSON
  * ]
  */
 project.ext.react = [
-        bundleAssetName: "simple.android.bundle",
-        entryFile: "js/index.android.js",
+        entryFile: "index.js",
         bundleInDebug: true,
-        bundleInRelease: true,
 		inputExcludes: ["android/**", "ios/**", ".idea/**", ".vscode/**"]
 ]
 

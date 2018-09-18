@@ -36,15 +36,9 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected String getJSMainModuleName() {
-            return "js/index.android";
+            return "index";
         }
-
-        // 重写此方法来改bundle文件名，则需要在构建文件中配置bundleAssetName
-        @Nullable
-        @Override
-        protected String getBundleAssetName() {
-            return "simple.android.bundle";
-        }
+        
     };
 
     @Override
