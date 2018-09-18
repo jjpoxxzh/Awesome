@@ -18,8 +18,10 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"js/index.ios" fallbackResource:nil];
-//  jsCodeLocation =[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/index.ios.bundle?platform=ios&dev=true",@"192.168.0.100:8081"]];
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+//  jsCodeLocation =[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/index.bundle?platform=ios&dev=true",@"192.168.0.101:8081"]];
+//  jsCodeLocation =[NSURL URLWithString:@"http://192.168.0.101:8081/index.bundle?platform=ios&dev=true"];
+
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"SimpleApp"

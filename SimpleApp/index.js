@@ -129,10 +129,10 @@ import BallTest from './js/touch/BallTest';
 
 import ModalTest from './js/dialog/ModalTest'
 
-// Native代码测试(简单的原生模块代码调用)
-import NativeTest from './js/NativeTest';
-// Native代码测试（一个详细的原生模块）
-import NativeTest2 from './js/NativeTest2';
+// // Native代码测试(简单的原生模块代码调用)
+// import NativeTest from './js/NativeTest';
+// // Native代码测试（一个详细的原生模块）
+// import NativeTest2 from './js/NativeTest2';
 
 // 联系人
 import LetterList from './js/nativemodule/Contacts';
