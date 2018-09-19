@@ -113,8 +113,14 @@ import ImageTest from './js/ImageTest';
 // 轮播
 import SwiperTest from  './js/SwiperTest';
 
-// 简单的动画
-import AnimationTest from './js/AnimationTest';
+// 透明度动画
+import FadeInExample from './js/animate/FadeInExample';
+// 缩放动画
+import ScaleExample from './js/animate/ScaleExample';
+// 缩放、平移、旋转动画
+import TransformBounceExample from './js/animate/TransformBounceExample';
+// 混合动画
+import CompositeExample from './js/animate/CompositeExample';
 
 import ButtonExample from './js/ButtonExample';
 
