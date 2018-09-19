@@ -19,9 +19,10 @@ export default class FadeInView2 extends Component {
 
     componentDidMount() {
         Animated.timing(this.state.xPosition, {
-            toValue: 200,
-            easing: Easing.back(),
-            duration: 2000
+            toValue: 150,
+            // easing: Easing.back(),
+            duration: 2000,
+            delay:2000,
         }).start();
     }
 
