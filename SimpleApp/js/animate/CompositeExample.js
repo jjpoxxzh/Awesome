@@ -10,7 +10,7 @@ import {
 import RNTesterButton from './RNTesterButton';
 
 /**
- * 缩放、平移、旋转动画
+ * 混合动画
  */
 export default class CompositeExample extends Component {
 
