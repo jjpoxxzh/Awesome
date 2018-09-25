@@ -122,6 +122,8 @@ import TransformBounceExample from './js/animate/TransformBounceExample';
 // 混合动画
 import CompositeExample from './js/animate/CompositeExample';
 
+import ShadowTest from './js/ShadowTest';
+
 import ButtonExample from './js/ButtonExample';
 
 // react native 库自带的Modal
@@ -149,3 +151,4 @@ import ParallaxTest from './js/ParallaxTest';
 import Talks from './js/Talks';
 
 AppRegistry.registerComponent('SimpleApp', () => App);
+

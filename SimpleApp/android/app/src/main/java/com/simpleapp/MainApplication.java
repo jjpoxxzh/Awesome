@@ -9,6 +9,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.simpleapp.bridgemodule.CommonReactPackage;
+import com.horcrux.svg.SvgPackage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +32,7 @@ public class MainApplication extends Application implements ReactApplication {
             list.add(new MainReactPackage());
             list.add(new CommonReactPackage());
             list.add(new VectorIconsPackage());
+            list.add(new SvgPackage());
             return list;
         }
 

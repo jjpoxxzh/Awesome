@@ -208,6 +208,7 @@ dependencies {
     compile 'com.airbnb.android:lottie:2.2.0'
     compile "com.facebook.react:react-native:+"  // 从 node_modules 目录下读取
     compile project(':react-native-vector-icons')
+    compile project(':react-native-svg')
 }
 
 // Run this once to be able to run the application with BUCK（一旦启用了开启BUCK就运行此任务）

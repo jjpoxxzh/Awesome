@@ -13,7 +13,9 @@
 		"react-native-modalbox": "^1.6.0",
 		"react-native-safe-module": "^1.2.0",
 		"react-native-scrollable-tab-view": "^0.8.0",
+		"react-native-shadow": "^1.2.2",
 		"react-native-slider": "^0.11.0",
+		"react-native-svg": "^7.0.3",
 		"react-native-swiper": "^1.5.10",
 		"react-native-vector-icons": "^4.5.0",
 		"react-navigation": "^2.7.0"
