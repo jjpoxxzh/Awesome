@@ -32,13 +32,13 @@ export default class FadeInExample extends Component {
                     Press to {this.state.show ? 'Hide' : 'Show'}
                 </RNTesterButton>
                 {this.state.show && <FadeInView style={{
-                    width: 250,
-                    height: 50,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    backgroundColor: 'powderblue',
+                    backgroundColor: 'deepskyblue',
                     borderWidth: 1,
-                    borderColor: '#f32e37',
+                    borderColor: 'dodgerblue',
+                    padding: 20,
+                    margin: 20,
+                    borderRadius: 10,
+                    alignItems: 'center',
                 }}>
                     <Text style={styles.tv}>Fading in</Text>
                 </FadeInView>
