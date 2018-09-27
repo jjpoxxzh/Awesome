@@ -12,10 +12,8 @@ import com.simpleapp.bridgemodule.CommonReactPackage;
 import com.horcrux.svg.SvgPackage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.annotation.Nullable;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -28,7 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-            List<ReactPackage> list = new ArrayList<ReactPackage>();
+            List<ReactPackage> list = new ArrayList<>();
             list.add(new MainReactPackage());
             list.add(new CommonReactPackage());
             list.add(new VectorIconsPackage());

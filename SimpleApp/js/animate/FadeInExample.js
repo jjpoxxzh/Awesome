@@ -9,7 +9,7 @@ import FadeInView from './FadeInView';
 import RNTesterButton from './RNTesterButton';
 
 /**
- * 动画实例
+ * 透明度动画
  */
 export default class FadeInExample extends Component {
 
