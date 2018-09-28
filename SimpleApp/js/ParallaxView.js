@@ -63,6 +63,7 @@ export default class ParallaxView extends Component {
         this._scrollView.setNativeProps(props);
     }
 
+    // 以下3个方法来自于ScrollableMixin，如果在本身不需要提供滚动方法给外部调用，可直接删除这3个方法以及上面的2个方法
     getInnerViewNode() {
         return this.getScrollResponder().getInnerViewNode();
     }

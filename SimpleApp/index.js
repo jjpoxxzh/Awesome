@@ -151,7 +151,7 @@ import LottieAnimatedExample from './js/LottieAnimatedExample';
 import ParallaxTest from './js/ParallaxTest';
 import Talks from './js/Talks';
 
-// 下拉滚动弹性视图
+// 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
 AppRegistry.registerComponent('SimpleApp', () => App);

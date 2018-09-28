@@ -7,11 +7,11 @@ import {
     View,
 } from 'react-native';
 
-import PropTypes from 'prop-types';
 import ParallaxView from './ParallaxView';
 
-
-
+/**
+ * 滑动视图的弹性头部例子
+ */
 export default class ParallaxViewTest extends Component {
 
     render() {
