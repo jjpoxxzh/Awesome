@@ -15,15 +15,16 @@ export default class TransformBounceExample extends Component {
 
     constructor(props) {
         super(props);
-        this.anim = this.anim || new Animated.Value(0);
+        this.anim = this.anim || new Animated.Value(0);     // 动画初始值为0
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <RNTesterButton onPress={() => {
+                    // 此动画改变anim的值
                     Animated.spring(this.anim, {
-                        toValue: 0,   // 返回到起点
+                        toValue: 0,   // 最后又变回0，即返回到起点
                         velocity: 3,  // 给它移动的速度
                         tension: -10, // 缓慢
                         friction: 1,  // 多次振荡
@@ -35,18 +36,21 @@ export default class TransformBounceExample extends Component {
                     style={[styles.content, {
                         transform: [   // Array order matters
                             {
+                                // scale 随着 anim 的变化而变化，anim为0时scale为1，anim为1时scale为4
                                 scale: this.anim.interpolate({  // 缩放
                                     inputRange: [0, 1],
                                     outputRange: [1, 4],
                                 })
                             },
                             {
+                                // translateX 随着 anim 的变化而变化，anim为0时translateX为0，anim为1时scale接近500
                                 translateX: this.anim.interpolate({ // 平移
                                     inputRange: [0, 1],
                                     outputRange: [0, 500],
                                 })
                             },
                             {
+                                // rotate 随着 anim 的变化而变化，anim为0时rotate为0deg，anim为1时360deg
                                 rotate: this.anim.interpolate({ // 旋转
                                     inputRange: [0, 1],
                                     outputRange: [

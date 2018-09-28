@@ -17,7 +17,9 @@ import PropTypes from 'prop-types';
 var screen = Dimensions.get('window');
 var ScrollViewPropTypes = ScrollView.propTypes;
 
-
+/**
+ * 由ScrollView修改的弹性视图
+ */
 export default class ParallaxView extends Component {
 
     static propTypes = {
@@ -45,7 +47,7 @@ export default class ParallaxView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scrollY: new Animated.Value(0)
+            scrollY: new Animated.Value(0), // Y轴方向滚动的距离，初始值设为0
         };
     }
 
@@ -66,7 +68,7 @@ export default class ParallaxView extends Component {
     }
 
     scrollTo(destY, destX) {
-        this.getScrollResponder().scrollTo(destY, destX);
+        this.getScrollResponder().scrollTo({ x: destY, y: destX, animated: true });
     }
 
     scrollWithoutAnimationTo(destY, destX) {
@@ -83,17 +85,30 @@ export default class ParallaxView extends Component {
             <Animated.Image
                 style={[styles.background, {
                     height: windowHeight,
-                    transform: [{
-                        translateY: scrollY.interpolate({
-                            inputRange: [-windowHeight, 0, windowHeight],
-                            outputRange: [windowHeight / 2, 0, -windowHeight / 3]
-                        })
-                    }, {
-                        scale: scrollY.interpolate({
-                            inputRange: [-windowHeight, 0, windowHeight],
-                            outputRange: [2, 1, 1]
-                        })
-                    }]
+                    transform: [
+                        {
+                            /*
+                            * 高度(translateY)随着 scrollY 变化而变化
+                            * 下拉到 windowHeight 时高度增加1/2，回到初始距离时高度不变，
+                            * 上拉到 windowHeight 时高度减小为原来的1/3
+                            */
+                            translateY: scrollY.interpolate({
+                                inputRange: [-windowHeight, 0, windowHeight],
+                                outputRange: [windowHeight / 2, 0, -windowHeight / 3]
+                            })
+                        },
+                        {
+                            /*
+                            * 大小(scale)随着 scrollY 变化而变化
+                            * 下拉到 windowHeight 时为2，回到初始距离时为1，
+                            * 上拉超到 windowHeight 时为1
+                            */
+                            scale: scrollY.interpolate({
+                                inputRange: [-windowHeight, 0, windowHeight],
+                                outputRange: [2, 1, 1]
+                            })
+                        }
+                    ]
                 }]}
                 source={backgroundSource}>
                 {/*
@@ -114,6 +129,11 @@ export default class ParallaxView extends Component {
             <Animated.View style={{
                 position: 'relative',
                 height: windowHeight,
+                borderWidth: 4, borderColor: '#6CCBC7',
+                /*
+                * 透明度(opacity)随scrollY变化而变化
+                * 下拉到 windowHeight 时不透明，回到初始距离时不透明，上拉超过一半多时全透明
+                */
                 opacity: scrollY.interpolate({
                     inputRange: [-windowHeight, 0, windowHeight / 1.2],
                     outputRange: [1, 1, 0]
@@ -133,10 +153,15 @@ export default class ParallaxView extends Component {
                     ref={component => { this._scrollView = component; }}
                     {...props}
                     style={styles.scrollView}
-                    onScroll={Animated.event(
-                        [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
-                    )}
-                    scrollEventThrottle={16}>
+                    scrollEventThrottle={16}
+                    onScroll={
+                        Animated.event(
+                            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+                        )
+                        // 下拉时，y为负，垂直偏移量逐渐增大；上拉时，y为正，垂直偏移量逐渐增大
+                    }
+                // onScroll={(event) => { console.log('TEST', event.nativeEvent); }}
+                >
                     {this.renderHeader()}
                     <View style={[styles.content, props.scrollableViewStyle]}>
                         {this.props.children}
@@ -152,14 +177,17 @@ const styles = StyleSheet.create({
         flex: 1,
         borderColor: 'transparent',
     },
-    scrollView: {
-        backgroundColor: 'transparent',
-    },
     background: {
         position: 'absolute',
+        top: 0,
+        left: 0,
         backgroundColor: '#2e2f31',
         width: screen.width,
-        resizeMode: 'cover'
+        resizeMode: 'cover',
+        borderWidth: 1, borderColor: '#FFAC69',
+    },
+    scrollView: {
+        backgroundColor: 'transparent',
     },
     blur: {
         position: 'absolute',
@@ -173,7 +201,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         backgroundColor: '#fff',
-        borderWidth: 1,borderColor: '#f32e37',
+        borderWidth: 1, borderColor: '#f32e37',
         shadowColor: '#222',
         shadowOpacity: 0.3,
         shadowRadius: 2,
