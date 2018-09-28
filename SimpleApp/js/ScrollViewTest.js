@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Dimensions,
     Image,
@@ -22,49 +22,52 @@ export default class ScrollViewTest extends Component {
     }
 
     toStart() {
-        this.scrollView.scrollTo({x: 0, y: 0, animated: true});
+        this.scrollView.scrollTo({ x: 0, y: 0, animated: true });
     }
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <TouchableHighlight style={scrollViewStyle.operation} onPress={() => this.toEnd()}>
                     <Text>滑动到底</Text>
                 </TouchableHighlight>
                 <ScrollView
-                    style={{flex: 1, marginTop: 10, marginBottom: 10, backgroundColor: '#f3f3f3'}}
+                    style={scrollViewStyle.sv}
                     horizontal={false}
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
                     ref={(scrollView) => {
                         this.scrollView = scrollView
                     }}
                 >
                     <Text style={scrollViewStyle.tv}>Scroll me plz</Text>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
                     <Text style={scrollViewStyle.tv}>If you like</Text>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
                     <Text style={scrollViewStyle.tv}>Scrolling down</Text>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
                     <Text style={scrollViewStyle.tv}>What's the best</Text>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
                     <Text style={scrollViewStyle.tv}>Framework around?</Text>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
-                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon} />
                     <Text style={scrollViewStyle.tv}>React Native</Text>
                 </ScrollView>
+
                 <TouchableHighlight style={scrollViewStyle.operation} onPress={() => this.toStart()}>
                     <Text>滑动到顶</Text>
                 </TouchableHighlight>
@@ -79,9 +82,15 @@ const scrollViewStyle = StyleSheet.create({
         height: 40,
         backgroundColor: '#FFAC69',
     },
+    sv: {
+        flex: 1,
+        marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: '#f3f3f3',
+        borderWidth: 1, borderColor: '#FFAC69',
+    },
     tv: {
         fontSize: 20,
-        backgroundColor: '#FFAC69',
     },
     img: {
         width: 100,

@@ -137,6 +137,7 @@ import BallTest from './js/touch/BallTest';
 
 import ModalTest from './js/dialog/ModalTest'
 
+// 由于没有对应的IOS原生代码，先注释
 // // Native代码测试(简单的原生模块代码调用)
 // import NativeTest from './js/NativeTest';
 // // Native代码测试（一个详细的原生模块）
@@ -149,6 +150,9 @@ import LottieAnimatedExample from './js/LottieAnimatedExample';
 // 下拉视图
 import ParallaxTest from './js/ParallaxTest';
 import Talks from './js/Talks';
+
+// 下拉滚动弹性视图
+import ParallaxViewTest from './js/ParallaxViewTest';
 
 AppRegistry.registerComponent('SimpleApp', () => App);
 
