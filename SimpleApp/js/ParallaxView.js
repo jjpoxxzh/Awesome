@@ -120,6 +120,32 @@ export default class ParallaxView extends Component {
         );
     }
 
+    renderBanner() {
+        var { windowHeight } = this.props;
+        var { scrollY } = this.state;
+        return (
+            <Animated.Image
+                style={[styles.background, {
+                    height: 100,
+                    transform: [
+                        {
+                            /*
+                            * 高度(translateY)随着 scrollY 变化而变化
+                            * 下拉到 windowHeight 时高度增加1/2，回到初始距离时高度不变，
+                            * 上拉到 windowHeight 时高度减小为原来的1/3
+                            */
+                            translateY: scrollY.interpolate({
+                                inputRange: [-windowHeight, 0, windowHeight],
+                                outputRange: [1, 1, 1]
+                            })
+                        },
+                    ]
+                }]}
+                source={{ uri: 'https://img.dsimg.cn/goods/201806/BC9487Q0AJVB.jpg' }}>
+            </Animated.Image>
+        );
+    }
+
     renderHeader() {
         var { windowHeight, backgroundSource } = this.props;
         var { scrollY } = this.state;
@@ -150,6 +176,7 @@ export default class ParallaxView extends Component {
         return (
             <View style={[styles.container, style]}>
                 {this.renderBackground()}
+                
                 <ScrollView
                     ref={component => { this._scrollView = component; }}
                     {...props}
@@ -168,6 +195,7 @@ export default class ParallaxView extends Component {
                         {this.props.children}
                     </View>
                 </ScrollView>
+                {this.renderBanner()}
             </View>
         );
     }
