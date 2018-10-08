@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Button,
     StyleSheet,
     Text,
     View
 } from 'react-native';
-import {StackNavigator, createBottomTabNavigator} from 'react-navigation';
+import { StackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-class HomeScreen extends React.Component {
+/**
+ * Home
+ */
+class HomeScreen extends Component {
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Home!</Text>
                 <Button
                     title="Go to Settings"
@@ -23,10 +26,13 @@ class HomeScreen extends React.Component {
     }
 }
 
-class SettingsScreen extends React.Component {
+/**
+ * Settings
+ */
+class SettingsScreen extends Component {
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Text>Settings!</Text>
                 <Button
                     title="Go to Home"
@@ -43,9 +49,9 @@ export default createBottomTabNavigator(
         Settings: SettingsScreen,
     },
     {
-        navigationOptions: ({navigation}) => ({
-            tabBarIcon: ({focused, tintColor}) => {
-                const {routeName} = navigation.state;
+        navigationOptions: ({ navigation }) => ({
+            tabBarIcon: ({ focused, tintColor }) => {
+                const { routeName } = navigation.state;
                 let iconName;
                 if (routeName === 'Home') {
                     iconName = `ios-information-circle${focused ? '' : '-outline'}`;
@@ -55,7 +61,7 @@ export default createBottomTabNavigator(
 
                 // You can return any component that you like here! We usually use an
                 // icon component from react-native-vector-icons
-                return <Ionicons name={iconName} size={25} color={tintColor}/>;
+                return <Ionicons name={iconName} size={25} color={tintColor} />;
             },
         }),
         tabBarOptions: {

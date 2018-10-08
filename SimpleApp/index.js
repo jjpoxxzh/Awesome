@@ -68,20 +68,20 @@ import SectionListBasics from './js/sectionlist/SectionListBasics';
 // 下拉刷新的简单应用
 import RefreshControlExample from './js/RefreshControlExample';
 
-// 导航栏的简单应用StackNavigator
-import  StackNaviTest from './js/StackNaviTest';
-// const stacknav = StackNaviTest.simple;
+// 栈层次导航 StackNavigator
+import  StackNaviTest from './js/navigator/StackNaviTest';
 
-import  StackNaviTest2 from './js/StackNaviTest2';
-import  StackNaviTest3 from './js/StackNaviTest3';
+// 底部Tab导航栏 BottomTabNavigator
+import  BottomTabNavigator1 from './js/navigator/BottomTabNavigator1';
 
-// 导航栏的简单应用TabNavigator
-import  TabNaviTest from './js/TabNaviTest';
-const tabnav = TabNaviTest.simple;
+// 底部Tab导航栏与栈层次导航的嵌套使用，外层为BottomTabNavigator，内层为StackNavigator
+import  BottomTabNavigator2 from './js/navigator/BottomTabNavigator2';
+
+// 顶部Tab导航栏 TabNavigator
+import  TabNavigatorTest from './js/navigator/TabNavigatorTest';
 
 // 导航栏嵌套
-import NestNaviTest from './js/NestNaviTest';
-const nestnav = NestNaviTest.simple;
+import stackNavigatorTest from './js/navigator/StackNavigatorTest';
 
 // 点击事件
 import ClickEventTest from  './js/ClickEventTest';
@@ -154,5 +154,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => App);
+AppRegistry.registerComponent('SimpleApp', () => MainTest);
 
