@@ -21,10 +21,11 @@ import infoLog from 'infoLog';
 
 const {width, height} = Dimensions.get('window');
 
-var _previousLeft = 0;
-var _previousTop = 0;
-var lastLeft = 0;
-var lastTop = 0;
+
+var _previousLeft = 0;  // 当前的x坐标
+var _previousTop = 0;   // 当前的y坐标
+var lastLeft = 0;   // 上次的x坐标
+var lastTop = 0;    // 上次的y坐标
 const CIRCLE_SIZE = 60;
 
 const TAG = "MenuBall";
@@ -60,6 +61,7 @@ export default class MenuBall extends Component {
 
     // 开始手势操作。给用户一些视觉反馈，让他们知道发生了什么事情！
     onPanResponderGrant(evt, gestureState) {
+        console.log('onPanResponderGrant')
         //infoLog(TAG, 'onPanResponderGrant...');
         this.setState({
             style: {
@@ -72,10 +74,12 @@ export default class MenuBall extends Component {
 
     // 最近一次的移动距离为gestureState.move{X,Y}
     onPanResponderMove(evt, gestureState) {
-        //infoLog(TAG, gestureState.dx, gestureState.dy);
+        console.log('onPanResponderMove', gestureState.dx, gestureState.dy)
+        // 记录下当前的位置
         _previousLeft = lastLeft + gestureState.dx;
         _previousTop = lastTop + gestureState.dy;
 
+        // 只能在屏幕区域内，不能超出屏幕区域
         if (_previousLeft <= 0) {
             _previousLeft = 0;
         }
@@ -89,7 +93,7 @@ export default class MenuBall extends Component {
             _previousTop = height - CIRCLE_SIZE;
         }
 
-        //实时更新
+        // 更新位置
         this.setState({
             style: {
                 backgroundColor: 'red',
@@ -105,6 +109,8 @@ export default class MenuBall extends Component {
      * @param gestureState
      */
     onPanResponderEnd(evt, gestureState) {
+        console.log('onPanResponderEnd')
+        // 记录下手放开时的位置
         lastLeft = _previousLeft;
         lastTop = _previousTop;
         this.changePosition();
@@ -115,7 +121,7 @@ export default class MenuBall extends Component {
      */
     changePosition() {
         if (_previousLeft + CIRCLE_SIZE / 2 <= width / 2) {    // 左边
-            _previousLeft = lastLeft = 0;
+            _previousLeft = lastLeft = 0;   // 置x方向坐标为0，即紧贴左边
             this.setState({
                 style: {
                     left: _previousLeft,
@@ -123,7 +129,7 @@ export default class MenuBall extends Component {
                 }
             });
         } else {    // 右边
-            _previousLeft = lastLeft = width - CIRCLE_SIZE;
+            _previousLeft = lastLeft = width - CIRCLE_SIZE; // 紧贴右边
             this.setState({
                 style: {
                     left: _previousLeft,

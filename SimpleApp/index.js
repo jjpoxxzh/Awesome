@@ -132,10 +132,10 @@ import ModalExample2 from './js/dialog/ModalExample2';
 // react-native-modalbox 的Modal
 import ModalExample3 from './js/dialog/ModalExample3';
 
+import ModalTest from './js/dialog/ModalTest'
+
 // 触碰滚动
 import BallTest from './js/touch/BallTest';
-
-import ModalTest from './js/dialog/ModalTest'
 
 // 由于没有对应的IOS原生代码，先注释
 // // Native代码测试(简单的原生模块代码调用)
@@ -154,5 +154,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => MainTest);
+AppRegistry.registerComponent('SimpleApp', () => BallTest);
 

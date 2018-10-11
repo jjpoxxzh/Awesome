@@ -9,7 +9,6 @@ const {width, height} = Dimensions.get('window');
 
 import MenuBall from './MenuBall';
 
-import infoLog from 'infoLog';
 const TAG = 'BallTest';
 /**
  * 测试悬浮小球的滚动
