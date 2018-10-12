@@ -26,13 +26,13 @@ import PropTest2 from './js/PropTest2';
 // 样式覆盖(后定义的样式会覆盖先定义的样式)
 import StyleTest from './js/StyleTest';
 
-// 属性及状态的研究与测试
-import StateTest from './js/StateTest';
+// 生命周期测试(属性与状态变更)
+import LifeCycleTest from './js/LifeCycleTest';
 
 // 文本输入测试
 import TextInputTest from './js/TextInputTest';
 
-// 简单ListView，获取JSONs数据并加载
+// 简单ListView，获取JSON数据并加载
 import MovieList from './js/listview/MovieList';
 
 // 简单电影列表，上拉加载更多，下拉刷新
@@ -157,5 +157,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => CirculateView);
+AppRegistry.registerComponent('SimpleApp', () => StateTest);
 
