@@ -19,6 +19,10 @@ const TAG = 'BgText';
  * 内部改状态是指在组件内部，通过setState()来修改状态(在组件内部，属性是不可更改的，更改后也不会引起宣染)
  * 而在组件外部，如平级组件或父组件，通过更改设置给组件的属性，可达到给组件传递数据并刷新组件的目的。
  * 但到底要如何实现对应属性的修改，不一定要在父组件再增加一个状态，普通的变量即可实现。
+ * 
+ * setState()方法是执行异步的。所以用得不好就可能出现：组件虽然已经被卸载，但是该方法还在异步调用。
+ * 如：setState(...): Can only update a mounted or mounting component. This usually means you called
+ * setState() on an unmounted component. This is a no-op.
  *  
  */
 class BgText extends Component {

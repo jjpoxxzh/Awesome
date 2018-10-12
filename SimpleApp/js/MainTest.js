@@ -12,6 +12,7 @@ import {
 export default class Main extends Component {
 
 
+
     testString() {
         console.log(StatusBar.currentHeight);
         var arr = [{name: 'a'}, {name: 'b'}, {name: 'c'}, {name: 'd'}];
