@@ -89,6 +89,9 @@ import ClickEventTest from  './js/ClickEventTest';
 // ScrollView使用
 import ScrollViewTest from './js/ScrollViewTest';
 
+// ScrollView实现ViewPager滚动的效果
+import CirculateView from './js/CirculateView';
+
 // Button样式
 import  ButtonTest from './js/ButtonTest';
 
@@ -154,5 +157,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => BallTest);
+AppRegistry.registerComponent('SimpleApp', () => CirculateView);
 
