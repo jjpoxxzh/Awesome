@@ -29,6 +29,9 @@ import StyleTest from './js/StyleTest';
 // 生命周期测试(属性与状态变更)
 import LifeCycleTest from './js/LifeCycleTest';
 
+// 生命周期测试(mobx)
+import LifeCycleMobxTest from './js/LifeCycleMobxTest';
+
 // 文本输入测试
 import TextInputTest from './js/TextInputTest';
 
@@ -157,5 +160,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => ParallaxViewTest);
+AppRegistry.registerComponent('SimpleApp', () => LifeCycleMobxTest);
 
