@@ -19,9 +19,9 @@ export default class LayoutTest extends Component {
                 </View>
                 <Text>相对布局（relative）</Text>
                 <View style={[styles.container, {flexDirection: 'column'}]}>
-                    <View style={styles.box1}/>
-                    <View style={[styles.box2, {position: 'relative', marginLeft: 50, marginTop: 50,}]}></View>
-                    <View style={[styles.box3, {position: 'relative'}]}/>
+                    <View style={[styles.box1,{position: 'relative',left: 25}]}/>
+                    <View style={[styles.box2, {position: 'relative', marginLeft: 100, marginTop: 50,}]}></View>
+                    <View style={[styles.box3, {}]}/>
                 </View>
                 <Text>绝对布局（absolute）</Text>
                 <View style={[styles.container, {flexDirection: 'column'}]}>

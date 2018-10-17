@@ -195,7 +195,7 @@ export default class ParallaxView extends Component {
                         {this.props.children}
                     </View>
                 </ScrollView>
-                {this.renderBanner()}
+                {/* {this.renderBanner()} */}
             </View>
         );
     }

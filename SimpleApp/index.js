@@ -157,5 +157,5 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-AppRegistry.registerComponent('SimpleApp', () => MainTest);
+AppRegistry.registerComponent('SimpleApp', () => ParallaxViewTest);
 
