@@ -29,7 +29,8 @@ export default class BackgroundText extends Component {
             bgColor: '#000000',
         };
         this.colors = ['#FFAC69', '#F08176', '#6CCBC7', '#CD8CC0', '#6FA9CE'];
-        this.isColorChange = false;
+        // 判断是否有属性变化
+        this.isPropsChange = false;
     }
 
     componentWillMount() {
@@ -42,13 +43,14 @@ export default class BackgroundText extends Component {
 
     componentWillReceiveProps(nextProps) {
         infoLog(TAG, "componentWillReceiveProps", nextProps);
-        this.isColorChange = true;
+        this.isPropsChange = true;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
         infoLog(TAG, "shouldComponentUpdate", nextProps, nextState);
-        if (this.isColorChange) {     // 属性有变更
-            this.isColorChange = false;
+        // 属性与状态不可能同时变更，在某一时刻，只有一种会发生变化。
+        if (this.isPropsChange) {     // 属性有变更
+            this.isPropsChange = false;
             if (nextProps.text === this.props.text) {
                 infoLog(TAG, "文本内容与上次相同，不更新属性")
                 return false;
@@ -77,7 +79,7 @@ export default class BackgroundText extends Component {
     }
 
     changeBgcolor() {
-        let value = parseInt(Math.random() * 5); // 取[1,6)的随机数
+        let value = parseInt(Math.random() * 5); // 取[1,5)的随机数
         this.setState({
             bgColor: this.colors[value],
         });

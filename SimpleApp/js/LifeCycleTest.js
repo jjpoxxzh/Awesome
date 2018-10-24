@@ -72,6 +72,7 @@ export default class LifeCycleTest extends Component {
         this.setState({
             text: strTemp,
         });
+        // 默认情况下，setState会引导视图的渲染，即使是新设置的值与旧的值相同
     }
 
 }
