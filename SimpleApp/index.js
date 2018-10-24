@@ -161,5 +161,5 @@ import Talks from './js/Talks';
 import ParallaxViewTest from './js/ParallaxViewTest';
 
 
-AppRegistry.registerComponent('SimpleApp', () => MobxRoot);
+AppRegistry.registerComponent('SimpleApp', () => MainTest);
 
