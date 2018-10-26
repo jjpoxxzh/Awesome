@@ -1,22 +1,18 @@
 'use strict';
 
-import {requireNativeComponent, View} from 'react-native';
+import React, {Component} from 'react';
+import {
+    requireNativeComponent,
+} from 'react-native';
+
 import PropTypes from 'prop-types';
 
-var letter = {
-    name: 'LetterIndexView',
-    propTypes: {
-        ...View.propTypes
-    },
-};
-
-var RCTLetterIndex = requireNativeComponent('LetterIndexView', letter, {
-    nativeOnly: {onChange: true}
-});
-
-import React, {Component} from 'react';
-
 class LetterIndex extends Component {
+
+    static propTypes = {
+        onTouchLettersDown: PropTypes.func,
+        onTouchLettersUp: PropTypes.func,
+    };
 
     constructor() {
         super();
@@ -30,7 +26,7 @@ class LetterIndex extends Component {
         }
         if (event.nativeEvent.message === 'down') {
             this.props.onTouchLettersDown();
-        }else if (event.nativeEvent.message === 'up') {
+        } else if (event.nativeEvent.message === 'up') {
             this.props.onTouchLettersUp();
         }
     }
@@ -39,20 +35,18 @@ class LetterIndex extends Component {
     //     if (!this.props.onTouchLettersUp) {
     //         return;
     //     }
-    //
-    //
     // }
 
     render() {
         return <RCTLetterIndex
             {...this.props}
-            onChange={this._onChange} />
+            onChange={this._onChange}/>
     }
 }
 
-LetterIndex.propTypes = {
-    onTouchLettersDown: PropTypes.func,
-    onTouchLettersUp: PropTypes.func,
-};
+export var RCTLetterIndex = requireNativeComponent('LetterIndexView', LetterIndex, {
+    nativeOnly: {onChange: true}
+});
 
-module.exports = LetterIndex;
+// module.exports = LetterIndex;
+

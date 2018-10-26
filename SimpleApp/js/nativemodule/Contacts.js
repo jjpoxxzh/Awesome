@@ -8,7 +8,7 @@ import {
     View
 } from 'react-native';
 
-import LetterIndexView from './LetterIndexView';
+import {RCTLetterIndex as LetterIndexView} from './LetterIndexView';
 import infoLog from 'infoLog';
 import listData from './letters.json';
 const {width, height} = Dimensions.get('window');
@@ -52,9 +52,9 @@ export default class Contacts extends Component {
         return (
             <View style={{flex: 1}}>
                 {/*<ListView dataSource={this.state.dataSource}
-                          renderRow={this.renderMovie}
-                          style={contacts_styles.lv}/>*/}
-                <LetterIndexView style={{height: height-30, width: 30, position: 'absolute', right: 10 ,}}
+                 renderRow={this.renderMovie}
+                 style={contacts_styles.lv}/>*/}
+                <LetterIndexView style={{height: height - 30, width: 30, position: 'absolute', right: 10,}}
                                  onTouchLettersUp={() => {
                                      console.log("移开")
                                  }}
