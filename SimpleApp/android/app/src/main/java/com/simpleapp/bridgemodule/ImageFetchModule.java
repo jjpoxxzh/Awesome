@@ -13,7 +13,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 /**
- * 回调模块，选择相册图片，对生命周期方法进行处理
+ * 选择相册图片，回调使用ActivityEventListener
  */
 public class ImageFetchModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 

@@ -12,7 +12,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
 /**
- * 回调模块，选择相册图片，对生命周期方法进行处理
+ * 选择相册图片，回调使用BaseActivityEventListener，并绑定到Activity的生命周期
  */
 public class ImagePickerModule extends ReactContextBaseJavaModule implements LifecycleEventListener{
 
