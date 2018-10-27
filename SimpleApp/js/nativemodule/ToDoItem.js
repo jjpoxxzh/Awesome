@@ -1,35 +1,31 @@
 /**
+ * 自定义的原生TextView对应的JS模块TodoItem
  * Created by Administrator on 2018/1/11.
  */
 
 'use strict';
 
-
-// import {PropTypes} from 'react';
-import {requireNativeComponent, View} from 'react-native';
+import React, { Component } from 'react';
+import {
+    requireNativeComponent,
+    View
+} from 'react-native';
 import PropTypes from 'prop-types';
 
-var todoItem = {
-    name: 'ToDoItemView',
-    propTypes: {
+
+// 第一个参数为原生视图的名称，第二个参数为封装后的组件MyCustomView
+var RCTToDoItemView = requireNativeComponent('ToDoItemView2', TodoItem);
+
+export default class TodoItem extends Component {
+
+    static propTypes = {
+        onChangeMessage: PropTypes.func,
         text: PropTypes.string,
         textSize: PropTypes.number,
         textColor: PropTypes.number,
         isAlpha: PropTypes.bool,
         ...View.propTypes
-    },
-};
-
-var RCTTodoItem = requireNativeComponent('ToDoItemView', todoItem ,{
-    nativeOnly: {onChange: true}
-});
-
-import React, {Component} from 'react';
-
-/**
- * 自定义的原生TextView对应的JS模块TodoItem
- */
-class TodoItem extends Component {
+    };
 
     constructor() {
         super();
@@ -47,14 +43,8 @@ class TodoItem extends Component {
     }
 
     render() {
-        return <RCTTodoItem
+        return <RCTToDoItemView
             {...this.props}
-            onChange={this._onChange}/>
+            onChange={this._onChange} />
     }
 }
-
-TodoItem.propTypes = {
-    onChangeMessage: PropTypes.func,
-}
-
-module.exports = TodoItem;
