@@ -1,13 +1,11 @@
 package com.simpleapp.bridgemodule;
 
 import com.facebook.react.ReactPackage;
-import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,7 +39,7 @@ public class CommonReactPackage implements ReactPackage {
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
         List<ViewManager> list = new ArrayList<ViewManager>();
         list.add(new CircleImageView(reactContext));    // 圆形视图
-        list.add(new ToDoItemView2());   // 自定义的TextView
+        list.add(new RNItemTextView());   // 自定义的TextView
         list.add(new LetterIndexView());    // 字母索引
         list.add(new LottieAnimationViewManager()); // 动画视图
         return list;

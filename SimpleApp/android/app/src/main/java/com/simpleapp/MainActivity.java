@@ -5,6 +5,9 @@ import android.view.View;
 
 import com.facebook.react.ReactActivity;
 
+/**
+ * React Native 应用的主Activity
+ */
 public class MainActivity extends ReactActivity {
 
 //    private final DoubleTapRecognizer doubleTapMenuRecognizer = new DoubleTapRecognizer(KeyEvent.KEYCODE_D);

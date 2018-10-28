@@ -12,6 +12,9 @@ import android.widget.ListView;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 主界面视图
+ */
 public class ScreenActivity extends AppCompatActivity {
 
     private Context context;
@@ -23,7 +26,7 @@ public class ScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen);
         context = this;
-        mListView = (ListView) findViewById(R.id.listvie);
+        mListView = findViewById(R.id.listvie);
         List<String> activity_list = Arrays.asList(getResources().getStringArray(R.array.activity_name));
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, activity_list);
         mListView.setAdapter(mAdapter);

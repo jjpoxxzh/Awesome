@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,11 +18,13 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.simpleapp.R;
 
+import java.util.Map;
+
 /**
  * 自定义的TextView <br>
  * 修改左、下边框，改变背景色，改变文本颜色，修改文本起始位置 <br>
  */
-public class ToDoListItemView extends TextView {
+public class ItemTextView extends TextView implements View.OnLongClickListener {
 
     /**
      * 绘制间隔线条的画笔
@@ -39,18 +43,28 @@ public class ToDoListItemView extends TextView {
      */
     private float margin;
 
-    public ToDoListItemView(Context context) {
+    private OnCustomBehavior customBehavior;
+
+    public void setCustomBehavior(OnCustomBehavior customBehavior) {
+        this.customBehavior = customBehavior;
+    }
+
+
+    public ItemTextView(Context context) {
         super(context);
+        setLongClickable(true);
         init();
     }
 
-    public ToDoListItemView(Context context, AttributeSet attrs) {
+    public ItemTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLongClickable(true);
         init();
     }
 
-    public ToDoListItemView(Context context, AttributeSet attrs, int defStyle) {
+    public ItemTextView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setLongClickable(true);
         init();
     }
 
@@ -89,17 +103,33 @@ public class ToDoListItemView extends TextView {
         canvas.restore();
     }
 
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        /**
-         * 触碰方法，由于是给JS响应，而不是给用于原生重写内容，故直接触发通知来引起JS事件
-         */
-        WritableMap params = Arguments.createMap();
-        params.putString("message", "MyMessage");
-        ReactContext reactContext = (ReactContext) getContext();
-        reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), "topChange", params);
-        System.out.println("----onTouchEvent----");
+        if (customBehavior != null) {
+            customBehavior.onTouch(this);
+        }
         return super.onTouchEvent(event);
+    }
+
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (customBehavior != null) {
+            customBehavior.onLongClick(this);
+        }
+        return true;
+    }
+
+
+    /**
+     * 自定义的方法事件
+     */
+    public interface OnCustomBehavior {
+
+        void onTouch(View view);
+
+        void onLongClick(View view);
     }
 
 }
