@@ -15,7 +15,7 @@ import com.simpleapp.R;
 
 /**
  * 字母索引列表，一般用于通讯录
- * （注意：自定义视图必须是public的，默认为包可见，运行没有问题但生成apk会出问题）
+ * （注意：自定义视图必须是public的；不包的话则为包可见，运行没有问题但生成apk会出问题）
  */
 public class LetterView extends TextView {
 
