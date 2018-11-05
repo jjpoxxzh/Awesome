@@ -9,17 +9,20 @@
  *
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
+    Animated,
     Dimensions,
+    ScrollView,
     StyleSheet,
+    Text,
     View,
     PanResponder,
 } from 'react-native';
 
 import infoLog from 'infoLog';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 
 var _previousLeft = 0;  // 当前的x坐标
@@ -33,7 +36,7 @@ const TAG = "MenuBall";
 /**
  * 悬浮拖拽小球
  */
-export default class MenuBall extends Component {
+export default class TouchTest extends Component {
 
     constructor(props) {
         super(props);
@@ -41,6 +44,7 @@ export default class MenuBall extends Component {
             style: {
                 backgroundColor: 'blue',
             },
+            yPosition: new Animated.Value(150),
         };
         this.onStartShouldSetPanResponder = this.onStartShouldSetPanResponder.bind(this);
         this.onMoveShouldSetPanResponder = this.onMoveShouldSetPanResponder.bind(this);
@@ -62,7 +66,6 @@ export default class MenuBall extends Component {
     // 开始手势操作。给用户一些视觉反馈，让他们知道发生了什么事情！
     onPanResponderGrant(evt, gestureState) {
         console.log('onPanResponderGrant')
-        //infoLog(TAG, 'onPanResponderGrant...');
         this.setState({
             style: {
                 backgroundColor: 'red',
@@ -74,33 +77,25 @@ export default class MenuBall extends Component {
 
     // 最近一次的移动距离为gestureState.move{X,Y}
     onPanResponderMove(evt, gestureState) {
-        console.log('onPanResponderMove', gestureState.dx, gestureState.dy)
+        console.log('onPanResponderMove', 'x: ' + gestureState.dx, 'y:' + gestureState.dy)
         // 记录下当前的位置
-        _previousLeft = lastLeft + gestureState.dx;
-        _previousTop = lastTop + gestureState.dy;
+        _previousLeft = gestureState.dx;
+        _previousTop = gestureState.dy;
 
-        // 只能在屏幕区域内，不能超出屏幕区域
-        if (_previousLeft <= 0) {
-            _previousLeft = 0;
-        }
-        if (_previousTop <= 0) {
-            _previousTop = 0;
-        }
-        if (_previousLeft >= width - CIRCLE_SIZE) {
-            _previousLeft = width - CIRCLE_SIZE;
-        }
-        if (_previousTop >= height - CIRCLE_SIZE) {
-            _previousTop = height - CIRCLE_SIZE;
-        }
-
+        let value = this.state.yPosition + _previousTop;
         // 更新球的位置
         this.setState({
             style: {
                 backgroundColor: 'red',
                 left: _previousLeft,
                 top: _previousTop,
-            }
+            },
         });
+        Animated.timing(this.state.yPosition, {     // 高度增加到150
+            toValue: value,
+            duration: 200,
+            delay: 0,
+        }).start();
     }
 
     /**
@@ -151,32 +146,24 @@ export default class MenuBall extends Component {
     }
 
     render() {
-        /**
-         * 三个点其实就是对象的扩展运算符，说白了就是把panHandlers对象里面所有的属性填充到View中。
-         * 通过源码我们也可以知道View中其实定义了一系列
-         * propTypes: {
-         * ……
-         *  onResponderGrant: PropTypes.func,
-         *  onResponderMove: PropTypes.func,
-         *  onResponderTerminationRequest: PropTypes.func,
-         *  onStartShouldSetResponder: PropTypes.func,
-         *  }
-         *  
-         */
         return (
             <View
                 {...this._panResponder.panHandlers}
-                style={[mbstyles.circle, this.state.style]}/>
+                style={[styles.container]}>
+                <Animated.View style={{
+                    width: width, height: this.state.yPosition, justifyContent: 'center', alignItems: 'center', backgroundColor: '#bebebe'
+                }}>
+                    <Text>下拉刷新</Text>
+                </Animated.View>
+                <View style={{ width: width, height: height, backgroundColor: '#FFAC69' }}>
+                </View>
+            </View>
         );
     }
 }
 
-const mbstyles = StyleSheet.create({
-    circle: {
-        width: CIRCLE_SIZE,
-        height: CIRCLE_SIZE,
-        borderRadius: CIRCLE_SIZE / 2,
-        backgroundColor: 'blue',
-        position: 'absolute',
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
     }
 });

@@ -143,6 +143,10 @@ import ModalTest from './js/dialog/ModalTest'
 // 触碰滚动
 import BallTest from './js/touch/BallTest';
 
+import PanResponderMazouri from './js/touch/PanResponderMazouri';
+
+import TouchTest from './js/touch/TouchTest';
+
 // 由于没有对应的IOS原生代码，先注释
 // // Native代码测试(简单的原生模块代码调用)
 // import NativeTest from './js/NativeTest';
