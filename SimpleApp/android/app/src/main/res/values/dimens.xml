@@ -4,4 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="notepad_margin">30dp</dimen>
+
+    <dimen name="image_height">100dp</dimen>
+    <dimen name="textview_height">200dp</dimen>
 </resources>

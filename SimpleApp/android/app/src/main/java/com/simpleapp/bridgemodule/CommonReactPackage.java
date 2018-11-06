@@ -42,6 +42,7 @@ public class CommonReactPackage implements ReactPackage {
         list.add(new RNItemTextView());   // 自定义的TextView
         list.add(new LetterIndexView());    // 字母索引
         list.add(new LottieAnimationViewManager()); // 动画视图
+        list.add(new FlexScrollView());
         return list;
     }
 }
