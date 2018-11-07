@@ -4,7 +4,7 @@
  */
 'use strict'
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
@@ -245,27 +245,25 @@ export default class PullToRefreshLayout extends Component {
         let indicatorView;
         if (this.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {
             indicatorView = <Image
-                style={{height: 30, width: 30, marginRight: 10}}
+                style={{ height: 30, width: 30, marginRight: 10 }}
                 source={require('./img/ptr_rotate_arrow.png')}
-                resizeMode={Image.resizeMode.contain}
+                resizeMode={'contain'}
             />;
             pullText = "下拉刷新";
-        }
-        else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {
+        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {
             indicatorView = <Image
-                style={{height: 30, width: 30, marginRight: 10, transform: [{rotate: "180deg"}]}}
+                style={{ height: 30, width: 30, marginRight: 10, transform: [{ rotate: "180deg" }] }}
                 source={require('./img/ptr_rotate_arrow.png')}
-                resizeMode={Image.resizeMode.contain}
+                resizeMode={'contain'}
             />;
             pullText = "释放刷新";
-        }
-        else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {
-            indicatorView = <ProgressBarAndroid style={{marginRight: 10, width: 30, height: 30}}/>
+        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {
+            indicatorView = <ProgressBarAndroid style={{ marginRight: 10, width: 30, height: 30 }} />
             pullText = "刷新中......";
         }
         return (
             <View style={styles.base}>
-                <View style={{backgroundColor: 'white', position: 'absolute',}}>
+                <View style={{ backgroundColor: '#F08176', position: 'absolute', }}>
                     <View style={{
                         justifyContent: 'center',
                         alignItems: 'center',
@@ -280,7 +278,7 @@ export default class PullToRefreshLayout extends Component {
                             alignItems: 'center',
                             marginLeft: 10
                         }}>
-                            <Text style={{fontSize: 12, color: '#666', marginBottom: 1}}>{pullText}</Text>
+                            <Text style={{ fontSize: 12, color: '#666', marginBottom: 1 }}>{pullText}</Text>
                             <Text style={{
                                 fontSize: 12,
                                 color: '#666',
@@ -291,7 +289,7 @@ export default class PullToRefreshLayout extends Component {
                 </View>
                 <View
                     ref={PULL_REFRESH_LAYOUT}
-                    style={{flex: 1, position: 'absolute'}}  {...this._panResponder.panHandlers} >
+                    style={{ flex: 1, position: 'absolute' }}  {...this._panResponder.panHandlers} >
                     {this.props.children}
                 </View>
             </View>
@@ -303,6 +301,7 @@ export default class PullToRefreshLayout extends Component {
 const styles = StyleSheet.create({
     base: {
         flex: 1,
-        position: 'relative'
+        position: 'relative',
+        borderWidth: 1, borderColor: '#f32e37'
     },
 });

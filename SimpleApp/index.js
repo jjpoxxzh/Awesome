@@ -164,6 +164,7 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
+// 下拉刷新
 import PullToRefreshLayoutTest from './js/PullToRefreshLayoutTest';
 
 AppRegistry.registerComponent('SimpleApp', () => MainTest);
