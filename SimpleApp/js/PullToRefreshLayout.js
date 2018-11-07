@@ -34,16 +34,16 @@ const BACK_TIME = 400;
 const REFRESH_LAST_TIME_KEY = "refresh_last";
 
 const RefreshStatus = {
-    Refresh_NONE: 0,
-    Refresh_Drag_Down: 1,
-    Refresh_Loading: 2,
-    Refresh_Reset: 3,
+    Refresh_NONE: 0,    // 未下拉
+    Refresh_Drag_Down: 1,   // 下拉(到标准点或最大值都算是)
+    Refresh_Loading: 2,     // 加载中
+    Refresh_Reset: 3,   // 加载完毕后重置
 };
 
 const ShowLoadingStatus = {
-    SHOW_DOWN: 0,
-    SHOW_UP: 1,
-    SHOW_LOADING: 2,
+    SHOW_DOWN: 0,   // 下拉
+    SHOW_UP: 1,     // 达到基准点
+    SHOW_LOADING: 2,    // 加载中
 };
 
 export default class PullToRefreshLayout extends Component {
@@ -51,9 +51,9 @@ export default class PullToRefreshLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentDistance: 0,
-            pullRefreshStatus: RefreshStatus.Refresh_NONE,
-            showPullStatus: ShowLoadingStatus.SHOW_DOWN,
+            currentDistance: 0,     // 当前移动的距离，值为手势下移的距离除阻止因子
+            pullRefreshStatus: RefreshStatus.Refresh_NONE,  // 展示下拉状态
+            showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
         this.resetHeader = this.resetHeader.bind(this);
@@ -79,14 +79,14 @@ export default class PullToRefreshLayout extends Component {
 
     //touch move 响应滑动事件
     _handlePanResponderMove(e: Object, gestureState: Object) {
-        if (self.state.currentDistance > REFRESH_PULL_LENGTH) {
-            if (self.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {
+        if (self.state.currentDistance > REFRESH_PULL_LENGTH) { // 下拉到基准点
+            if (self.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {    // 改变状态
                 self.setState({
                     showPullStatus: ShowLoadingStatus.SHOW_UP,
                 });
             }
-        } else {
-            if (self.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {
+        } else {    // 未下拉到基准点
+            if (self.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {  // 如果状态不对，则修改为下拉状态
                 self.setState({
                     showPullStatus: ShowLoadingStatus.SHOW_DOWN,
                 });
@@ -97,6 +97,7 @@ export default class PullToRefreshLayout extends Component {
                 currentDistance: REFRESH_PULL_LENGTH + gestureState.dy / factor,
                 // refreshStateHeader:2,
             });
+            // 
             self.refs[PULL_REFRESH_LAYOUT].setNativeProps({
                 style: {
                     marginTop: self.state.currentDistance,
@@ -104,7 +105,7 @@ export default class PullToRefreshLayout extends Component {
             });
             return;
         }
-        if (gestureState.dy > 0 && self.state.currentDistance < MAX_PULL_LENGTH) {
+        if (gestureState.dy > 0 && self.state.currentDistance < MAX_PULL_LENGTH) {  // 往下拉，但未达到最大值
             self.setState({
                 currentDistance: gestureState.dy / factor,
                 pullRefreshStatus: RefreshStatus.Refresh_Drag_Down,
@@ -127,7 +128,15 @@ export default class PullToRefreshLayout extends Component {
         }
     }
 
+    _handlePanResponderEnd(e: Object, gestureState: Object) {
+        if (self.state.currentDistance >= REFRESH_PULL_LENGTH) {    // 如果超过基准高度
+            self.refreshStateHeader();
+        } else {    // 未超过基准高度
+            self.resetHeader();
+        }
+    }
 
+    // 加载完成，从基准点回到0；或者从小于基准高度的距离回到0
     resetHeader() {
         LayoutAnimation.configureNext({
             duration: BACK_TIME,
@@ -147,6 +156,7 @@ export default class PullToRefreshLayout extends Component {
         });
     }
 
+    // 从大于基准高度的距离回到基准高度，进行加载操作
     refreshStateHeader() {
         self.setState({
             pullRefreshStatus: RefreshStatus.Refresh_Loading,
@@ -199,15 +209,6 @@ export default class PullToRefreshLayout extends Component {
         this.resetHeader();
     }
 
-    _handlePanResponderEnd(e: Object, gestureState: Object) {
-        if (self.state.currentDistance >= REFRESH_PULL_LENGTH) {
-            self.refreshStateHeader();
-        }
-        else {
-            self.resetHeader();
-        }
-    }
-
     componentDidMount() {
         AsyncStorage.getItem(REFRESH_LAST_TIME_KEY, (err, result) => {
             if (result) {
@@ -243,21 +244,21 @@ export default class PullToRefreshLayout extends Component {
     render() {
         let pullText;
         let indicatorView;
-        if (this.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {
+        if (this.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {    // 触屏下拉
             indicatorView = <Image
                 style={{ height: 30, width: 30, marginRight: 10 }}
                 source={require('./img/ptr_rotate_arrow.png')}
                 resizeMode={'contain'}
             />;
             pullText = "下拉刷新";
-        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {
+        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_UP) {   // 达到基准点后
             indicatorView = <Image
                 style={{ height: 30, width: 30, marginRight: 10, transform: [{ rotate: "180deg" }] }}
                 source={require('./img/ptr_rotate_arrow.png')}
                 resizeMode={'contain'}
             />;
             pullText = "释放刷新";
-        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {
+        } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {  // 放手进入刷新中
             indicatorView = <ProgressBarAndroid style={{ marginRight: 10, width: 30, height: 30 }} />
             pullText = "刷新中......";
         }

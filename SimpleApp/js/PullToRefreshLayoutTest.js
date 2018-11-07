@@ -38,7 +38,7 @@ export default class PullToRefreshLayoutTest extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <PullToRefreshLayout ref={component => { this.pulltorefresh = component }} style={{ flex: 1, }}
+                <PullToRefreshLayout ref={component => { this.pulltorefresh = component }}
                     onRefresh={() => {
                         console.log('onRefresh')
                         this.fetchData();
