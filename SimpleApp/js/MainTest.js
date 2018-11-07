@@ -25,39 +25,32 @@ export default class Main extends Component {
         }
     }
 
-    // render() {
-    //     return (
-    //         <View style={mainstyles.container}>
-    //             <TouchableOpacity onPress={() => {
-    //                 this.testString();
-    //             }}>
-    //                 <Text style={mainstyles.welcome}>
-    //                     Welcome to React Native!
-    //                 </Text>
-    //                 <Text style={mainstyles.instructions}>
-    //                     To get started, edit index.android.js
-    //                 </Text>
-    //                 <Text style={mainstyles.instructions}>
-    //                     Double tap R on your keyboard to reload,{'\n'}
-    //                     Shake or press menu button for dev menu
-    //                 </Text>
-    //                 <Text style={mainstyles.welcome}>
-    //                     中华人民共和国大圣
-    //                 </Text>
-    //             </TouchableOpacity>
-    //         </View>
-    //     );
-    // }
-
     render() {
         return (
+            <View style={mainstyles.container}>
+                <TouchableOpacity onPress={() => {
+                    this.testString();
+                }}>
+                    <Text style={mainstyles.welcome}>
+                        Welcome to React Native!
+                    </Text>
+                    <Text style={mainstyles.instructions}>
+                        To get started, edit index.android.js
+                    </Text>
+                    <Text style={mainstyles.instructions}>
+                        Double tap R on your keyboard to reload,{'\n'}
+                        Shake or press menu button for dev menu
+                    </Text>
+                    <Text style={mainstyles.welcome}>
+                        中华人民共和国大圣
+                    </Text>
+                </TouchableOpacity>
+            </View>
 
-
-<FlexScrollView style={{ flex: 1, width: screen.width, height: screen.height }} />
+            // <FlexScrollView style={{ flex: 1, width: screen.width, height: screen.height }} />
 
         );
     }
-
 
 }
 

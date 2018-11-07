@@ -6,11 +6,13 @@
 
 import React, { Component } from 'react';
 import {
+    ScrollView,
     StyleSheet,
     View,
     PanResponder,
     LayoutAnimation,
     ProgressBarAndroid,
+    ActivityIndicator,
     Dimensions,
     Text,
     AsyncStorage,
@@ -250,7 +252,8 @@ export default class PullToRefreshLayout2 extends Component {
             />;
             pullText = "释放刷新";
         } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {  // 放手进入刷新中
-            indicatorView = <ProgressBarAndroid style={{ marginRight: 10, width: 30, height: 30 }} />
+            indicatorView = <ActivityIndicator size="small" color="#00ff00" />;
+            
             pullText = "刷新中......";
         }
         return (
