@@ -15,6 +15,7 @@ import {
     Text,
     AsyncStorage,
     Image,
+    UIManager,
 } from 'react-native';
 
 let self;
@@ -29,7 +30,7 @@ const MAX_PULL_LENGTH = 170;
 /**Loading的高度*/
 const REFRESH_PULL_LENGTH = 70;
 /**动画时长*/
-const BACK_TIME = 400;
+const BACK_TIME = 200;
 /**存储最后刷新时间的Key*/
 const REFRESH_LAST_TIME_KEY = "refresh_last";
 
@@ -45,6 +46,9 @@ const ShowLoadingStatus = {
     SHOW_UP: 1,     // 达到基准点
     SHOW_LOADING: 2,    // 加载中
 };
+
+// 要在Android上使用此动画，则需要在代码中启用
+UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export default class PullToRefreshLayout extends Component {
 

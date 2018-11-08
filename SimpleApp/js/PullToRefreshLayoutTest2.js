@@ -22,7 +22,7 @@ export default class PullToRefreshLayoutTest2 extends Component {
     stopRefresh() {
         setTimeout(() => {
             this.pulltorefresh.stopRefresh();   // 停止刷新
-        }, 3000);
+        }, 2000);
     }
 
     render() {

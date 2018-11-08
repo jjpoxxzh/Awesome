@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import {
+    InteractionManager,
     ScrollView,
     StyleSheet,
     View,
@@ -18,6 +19,7 @@ import {
     AsyncStorage,
     Image,
     ImageBackground,
+    UIManager,
 } from 'react-native';
 
 let self;
@@ -32,7 +34,7 @@ const MAX_PULL_LENGTH = 170;
 /**Loading的高度*/
 const REFRESH_PULL_LENGTH = 70;
 /**动画时长*/
-const BACK_TIME = 400;
+const BACK_TIME = 200;
 /**存储最后刷新时间的Key*/
 const REFRESH_LAST_TIME_KEY = "refresh_last";
 
@@ -48,6 +50,11 @@ const ShowLoadingStatus = {
     SHOW_UP: 1,     // 达到基准点
     SHOW_LOADING: 2,    // 加载中
 };
+
+const TAG = 'PullToRefreshLayout2';
+
+// 要在Android上使用此动画，则需要在代码中启用
+UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export default class PullToRefreshLayout2 extends Component {
 
@@ -106,9 +113,10 @@ export default class PullToRefreshLayout2 extends Component {
                     height: self.state.currentDistance,
                 }
             });
+
             return;
         }
-        if (gestureState.dy > 0 ) {
+        if (gestureState.dy > 0) {
             self.setState({
                 currentDistance: gestureState.dy / factor,
                 pullRefreshStatus: RefreshStatus.Refresh_Drag_Down,
@@ -131,15 +139,16 @@ export default class PullToRefreshLayout2 extends Component {
 
     // 加载完成，从基准点回到0；或者从小于基准高度的距离回到0
     resetHeader() {
+        console.log(TAG, 'resetHeader');
         LayoutAnimation.configureNext({
             duration: BACK_TIME,
             update: {
                 type: 'linear',
             }
         });
-        self.refs[PULL_REFRESH_LAYOUT].setNativeProps({
+        self.refs['header'].setNativeProps({
             style: {
-                marginTop: 0,
+                height: REFRESH_PULL_LENGTH,
             }
         });
         self.setState({
@@ -151,6 +160,7 @@ export default class PullToRefreshLayout2 extends Component {
 
     // 从大于基准高度的距离回到基准高度，进行加载操作
     refreshStateHeader() {
+        console.log(TAG, 'refreshStateHeader');
         self.setState({
             pullRefreshStatus: RefreshStatus.Refresh_Loading,
             currentDistance: REFRESH_PULL_LENGTH,
@@ -195,11 +205,14 @@ export default class PullToRefreshLayout2 extends Component {
         let savedDate = this.getTime();
         self.setState({
             showPullLastTime: savedDate,
+            currentDistance: 0,
+            pullRefreshStatus: RefreshStatus.Refresh_Reset,
+            showPullStatus: ShowLoadingStatus.SHOW_DOWN,
         });
         AsyncStorage.setItem(REFRESH_LAST_TIME_KEY, savedDate, () => {
 
         });
-        this.resetHeader();
+        // this.resetHeader();
     }
 
     componentDidMount() {
@@ -253,7 +266,6 @@ export default class PullToRefreshLayout2 extends Component {
             pullText = "释放刷新";
         } else if (this.state.showPullStatus === ShowLoadingStatus.SHOW_LOADING) {  // 放手进入刷新中
             indicatorView = <ActivityIndicator size="small" color="#00ff00" />;
-            
             pullText = "刷新中......";
         }
         return (

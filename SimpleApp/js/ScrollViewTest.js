@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import {
+    Animated,
     Dimensions,
     Image,
     ScrollView,
     StyleSheet,
     Text,
     TouchableHighlight,
-    View
+    View,
+    RefreshControl,
 } from 'react-native';
 
 var screen = Dimensions.get('window');
@@ -17,12 +19,27 @@ const favicon = require('./img/favicon.png');
  */
 export default class ScrollViewTest extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            refreshing: false,
+        };
+
+    }
+
     toEnd() {
         this.scrollView.scrollToEnd();
     }
 
     toStart() {
         this.scrollView.scrollTo({ x: 0, y: 0, animated: true });
+    }
+
+    _onRefresh = () => {
+        this.setState({ refreshing: true });
+        setTimeout(() => {
+            this.setState({ refreshing: false });
+        }, 3000);
     }
 
     render() {
@@ -39,6 +56,23 @@ export default class ScrollViewTest extends Component {
                     ref={(scrollView) => {
                         this.scrollView = scrollView
                     }}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.refreshing}
+                            onRefresh={this._onRefresh}
+                            colors={['#f32e37', '#FFAC69', '#F08176']}
+                            enabled={true}
+                        />
+                    }
+                    onScroll={
+                        Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }], {
+                            listener: (e) => {
+                                const y = e && e.nativeEvent.contentOffset.y;
+                                console.log('y', y);
+                            },
+                        })
+                    }
+                    scrollEventThrottle={16}
                 >
                     <Text style={scrollViewStyle.tv}>Scroll me plz</Text>
                     <Image style={scrollViewStyle.img} source={favicon} />
