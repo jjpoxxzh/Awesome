@@ -40,9 +40,10 @@ public class CommonReactPackage implements ReactPackage {
         List<ViewManager> list = new ArrayList<ViewManager>();
         list.add(new CircleImageView(reactContext));    // 圆形视图
         list.add(new RNItemTextView());   // 自定义的TextView
+        list.add(new ToDoItemView());   // 自定义的TextView
         list.add(new LetterIndexView());    // 字母索引
         list.add(new LottieAnimationViewManager()); // 动画视图
-        list.add(new FlexScrollView());
+        list.add(new MyReactScrollViewManager());
         return list;
     }
 }

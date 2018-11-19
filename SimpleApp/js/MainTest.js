@@ -5,11 +5,10 @@ import {
     StyleSheet,
     Text,
     TouchableOpacity,
-    Platform,
     View
 } from 'react-native';
 
-import FlexScrollView from './nativemodule/FlexScrollView';
+// import MyScrollView from './nativemodule/MyScrollView';
 
 var screen = Dimensions.get('window');
 
@@ -47,7 +46,7 @@ export default class Main extends Component {
                 </TouchableOpacity>
             </View>
 
-            // <FlexScrollView style={{ flex: 1, width: screen.width, height: screen.height }} />
+            // <MyScrollView style={{ flex: 1, width: screen.width, height: screen.height }}  />
 
         );
     }

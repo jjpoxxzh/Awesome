@@ -64,7 +64,7 @@ public class ToDoItemView extends SimpleViewManager<ItemTextView> implements Vie
         WritableMap params = Arguments.createMap();
         params.putString("message", "MyMessage");
         mContext.getJSModule(RCTEventEmitter.class).receiveEvent(v.getId(), "topChange", params);
-        return false;
+        return true;
     }
 }
 

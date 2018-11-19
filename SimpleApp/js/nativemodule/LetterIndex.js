@@ -2,16 +2,20 @@
 
 import React, {Component} from 'react';
 import {
+    View,
     requireNativeComponent,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-class LetterIndex extends Component {
+var RCTLetterIndex = requireNativeComponent('LetterIndexView');
+
+export default class LetterIndex extends Component {
 
     static propTypes = {
         onTouchLettersDown: PropTypes.func,
         onTouchLettersUp: PropTypes.func,
+        ...View.propTypes,      // 包含默认的View的属性
     };
 
     constructor() {
@@ -38,15 +42,10 @@ class LetterIndex extends Component {
     // }
 
     render() {
+        console.log("render")
         return <RCTLetterIndex
             {...this.props}
             onChange={this._onChange}/>
     }
 }
-
-export var RCTLetterIndex = requireNativeComponent('LetterIndexView', LetterIndex, {
-    nativeOnly: {onChange: true}
-});
-
-// module.exports = LetterIndex;
 

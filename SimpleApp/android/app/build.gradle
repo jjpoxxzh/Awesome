@@ -161,13 +161,13 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    // 产品的风格定制
-    productFlavors {
-        lj {
-            applicationId "com.simpleapplj"
-            versionCode 20
-        }
-    }
+//    // 产品的风格定制
+//    productFlavors {
+//        lj {
+//            applicationId "com.simpleapplj"
+//            versionCode 20
+//        }
+//    }
 
 //	productFlavors.all { flavor ->
 //		println name

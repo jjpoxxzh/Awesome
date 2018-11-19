@@ -14,18 +14,6 @@ import * as globalConfig from './styleconfig';
 
 import {Short, Long, show, pass, operate, tell} from './nativemodule/ToastExample2';
 import ImageExample from './nativemodule/ImageExample';
-// 原生圆角视图
-import CircleImageView from './nativemodule/CircleImageView';
-// 原生TextView视图
-import ToDoItemView from './nativemodule/ToDoItemView';
-
-const images1 = [{uri: 'http://www.w3school.com.cn/ui2017/logo-96.png'}];
-const images2 = [
-    {uri: 'http://www.w3school.com.cn/i/eg_bg_03.gif', width: 100.0, height: 100.0},
-    {uri: 'http://www.w3school.com.cn/i/eg_bg_04.gif', width: 100.0, height: 100.0},
-    {uri: 'http://www.w3school.com.cn/i/eg_bg_05.gif', width: 100.0, height: 100.0},
-    {uri: 'http://www.w3school.com.cn/i/eg_bg_06.gif', width: 100.0, height: 100.0}
-];
 
 class Item extends Component {
     render() {
@@ -94,15 +82,6 @@ export default class NativeTest2 extends Component {
                     }} bgcolor={globalConfig.color_2}/>
 
                 </View>
-                <CircleImageView style={{width: 150, height: 150}}
-                                 src={images1} borderRadius={5}
-                                 resizeMode="cover"/>
-                <ToDoItemView style={{width: globalConfig.width, height: 50}} text="测试文本" textSize={22}
-                              isAlpha={false}
-                              onChangeMessage={() => {
-                                  this.doSomething();
-                              }}/>
-
             </View>
         );
     }

@@ -149,9 +149,11 @@ import TouchTest from './js/touch/TouchTest';
 
 // 由于没有对应的IOS原生代码，先注释
 // // Native代码测试(简单的原生模块代码调用)
-// import NativeTest from './js/NativeTest';
+import NativeTest from './js/NativeTest';
 // // Native代码测试（一个详细的原生模块）
-// import NativeTest2 from './js/NativeTest2';
+import NativeTest2 from './js/NativeTest2';
+
+import NativeViewTest from './js/NativeViewTest';
 
 // 联系人
 import LetterList from './js/nativemodule/Contacts';

@@ -12,11 +12,9 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-// 第一个参数为原生视图的名称，第二个参数为封装后的组件MyCustomView
-var RCTToDoItemView = requireNativeComponent('ToDoItemView2', TodoItem);
+var RCTToDoItemView = requireNativeComponent('RNItemTextView');
 
-// 把原生组件封装成普通的React组件，即TodoItem
-export default class TodoItem extends Component {
+export class TodoItem extends Component {
 
     static propTypes = {
         onChangeMessage: PropTypes.func,
