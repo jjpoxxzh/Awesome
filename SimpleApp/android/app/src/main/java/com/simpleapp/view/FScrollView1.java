@@ -8,16 +8,21 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.Scroller;
 
 
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.uimanager.MeasureSpecAssertions;
+import com.facebook.react.views.scroll.FpsListener;
+import com.facebook.react.views.scroll.ReactScrollView;
 import com.simpleapp.R;
+
+import javax.annotation.Nullable;
 
 /**
  * 修改ScrollView，使其头、尾可弹性拖动
  */
-public class FScrollView1 extends ScrollView {
+public class FScrollView1 extends ReactScrollView {
 
     private static final String TAG = "FScrollView1";
 
@@ -27,9 +32,8 @@ public class FScrollView1 extends ScrollView {
      */
     private Scroller mScroller;
 
-    private LinearLayout mLayout;
+//    private LinearLayout mLayout;
 
-    private LinearLayout mContentLayout;
 
     /**
      * 页眉视图
@@ -72,36 +76,24 @@ public class FScrollView1 extends ScrollView {
 
 //    private int deltaY = 0;
 
-    public FScrollView1(Context context) {
+
+    public FScrollView1(ReactContext context) {
         super(context);
         initWithContext(context);
     }
 
-    public FScrollView1(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public FScrollView1(ReactContext context, @Nullable FpsListener fpsListener) {
+        super(context, fpsListener);
         initWithContext(context);
     }
 
-    public FScrollView1(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-        initWithContext(context);
-    }
 
     private void initWithContext(Context context) {
         mScroller = new Scroller(context, new DecelerateInterpolator());
         mHeaderViewHeight = (int) getResources().getDimension(R.dimen.image_height);
-
-        mLayout = (LinearLayout) View.inflate(context, R.layout.fscrollview, null);
-        mHeaderView = mLayout.findViewById(R.id.flex_header_content);
-
-        mContentLayout = mLayout.findViewById(R.id.content_layout);
-
-        addView(mLayout);
     }
 
-    public void appendView(View view){
-        mContentLayout.addView(view);
-    }
+
 
     /**
      * enable or disable pull down refresh feature.

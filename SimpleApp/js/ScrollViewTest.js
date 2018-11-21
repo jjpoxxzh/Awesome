@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
     Animated,
     Dimensions,
     Image,
-    ScrollView,
     StyleSheet,
     Text,
     TouchableHighlight,
     View,
     RefreshControl,
 } from 'react-native';
+
+import ScrollView from './nativemodule/ScrollView';
 
 var screen = Dimensions.get('window');
 
@@ -32,19 +33,19 @@ export default class ScrollViewTest extends Component {
     }
 
     toStart() {
-        this.scrollView.scrollTo({ x: 0, y: 0, animated: true });
+        this.scrollView.scrollTo({x: 0, y: 0, animated: true});
     }
 
     _onRefresh = () => {
-        this.setState({ refreshing: true });
+        this.setState({refreshing: true});
         setTimeout(() => {
-            this.setState({ refreshing: false });
+            this.setState({refreshing: false});
         }, 3000);
     }
 
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={{flex: 1, backgroundColor: 'white'}}>
                 <TouchableHighlight style={scrollViewStyle.operation} onPress={() => this.toEnd()}>
                     <Text>滑动到底</Text>
                 </TouchableHighlight>
@@ -65,7 +66,7 @@ export default class ScrollViewTest extends Component {
                         />
                     }
                     onScroll={
-                        Animated.event([{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }], {
+                        Animated.event([{nativeEvent: {contentOffset: {y: this.state.scrollY}}}], {
                             listener: (e) => {
                                 const y = e && e.nativeEvent.contentOffset.y;
                                 console.log('y', y);
@@ -75,30 +76,30 @@ export default class ScrollViewTest extends Component {
                     scrollEventThrottle={16}
                 >
                     <Text style={scrollViewStyle.tv}>Scroll me plz</Text>
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
                     <Text style={scrollViewStyle.tv}>If you like</Text>
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
                     <Text style={scrollViewStyle.tv}>Scrolling down</Text>
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
                     <Text style={scrollViewStyle.tv}>What's the best</Text>
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
                     <Text style={scrollViewStyle.tv}>Framework around?</Text>
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
-                    <Image style={scrollViewStyle.img} source={favicon} />
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
+                    <Image style={scrollViewStyle.img} source={favicon}/>
                     <Text style={scrollViewStyle.tv}>React Native</Text>
                 </ScrollView>
 

@@ -6,7 +6,7 @@ import {
 
 
 /**
- * 加载时带有淡入动画效果的视图.
+ * 有放大效果的视图(高度先增加到300，宽度再增加到200)
  */
 export default class ScaleView extends Component {
 

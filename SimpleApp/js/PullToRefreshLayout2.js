@@ -7,7 +7,6 @@
 import React, { Component } from 'react';
 import {
     InteractionManager,
-    ScrollView,
     StyleSheet,
     View,
     PanResponder,
@@ -21,6 +20,8 @@ import {
     ImageBackground,
     UIManager,
 } from 'react-native';
+
+import ScrollView from './nativemodule/ScrollView';
 
 let self;
 /**ref的引用*/
@@ -269,7 +270,7 @@ export default class PullToRefreshLayout2 extends Component {
             pullText = "刷新中......";
         }
         return (
-            <View style={styles.base}>
+            <ScrollView style={styles.base}>
                 <ImageBackground style={{ width: deviceWidth }} resizeMode={'stretch'}
                     source={require('./img/header.png')} ref={'header'}>
                     <View style={{
@@ -298,9 +299,9 @@ export default class PullToRefreshLayout2 extends Component {
                 <View
                     ref={PULL_REFRESH_LAYOUT}
                     style={{ flex: 1, }}  {...this._panResponder.panHandlers} >
-                    {this.props.children}
+                        {this.props.children}
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }

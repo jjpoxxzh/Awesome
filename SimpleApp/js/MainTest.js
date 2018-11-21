@@ -8,13 +8,11 @@ import {
     View
 } from 'react-native';
 
-// import MyScrollView from './nativemodule/MyScrollView';
+import FlexScrollView from './nativemodule/FlexScrollView';
 
 var screen = Dimensions.get('window');
 
 export default class Main extends Component {
-
-
 
     testString() {
         console.log(StatusBar.currentHeight);
@@ -26,10 +24,8 @@ export default class Main extends Component {
 
     render() {
         return (
-            <View style={mainstyles.container}>
-                <TouchableOpacity onPress={() => {
-                    this.testString();
-                }}>
+            <FlexScrollView style={{ flex: 1, width: screen.width, height: screen.height, }}>
+                <TouchableNativeFeedback style={mainstyles.container}>
                     <Text style={mainstyles.welcome}>
                         Welcome to React Native!
                     </Text>
@@ -43,11 +39,8 @@ export default class Main extends Component {
                     <Text style={mainstyles.welcome}>
                         中华人民共和国大圣
                     </Text>
-                </TouchableOpacity>
-            </View>
-
-            // <MyScrollView style={{ flex: 1, width: screen.width, height: screen.height }}  />
-
+                </TouchableNativeFeedback>
+            </FlexScrollView>
         );
     }
 
@@ -55,13 +48,15 @@ export default class Main extends Component {
 
 const mainstyles = StyleSheet.create({
     container: {
-        flex: 1,
+        width: screen.width,
+        height: screen.height,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
         fontSize: 20,
+        height: 100,
         textAlign: 'center',
         margin: 10,
         color: '#f32e37'
@@ -69,6 +64,7 @@ const mainstyles = StyleSheet.create({
     instructions: {
         textAlign: 'center',
         color: '#333333',
+        height: 80,
         marginBottom: 5,
     },
 });

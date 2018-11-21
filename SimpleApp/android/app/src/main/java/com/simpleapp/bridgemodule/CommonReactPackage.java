@@ -4,6 +4,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
+import com.facebook.react.views.scroll.ReactScrollViewManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,8 @@ public class CommonReactPackage implements ReactPackage {
         list.add(new ToDoItemView());   // 自定义的TextView
         list.add(new LetterIndexView());    // 字母索引
         list.add(new LottieAnimationViewManager()); // 动画视图
-        list.add(new MyReactScrollViewManager());
+        list.add(new FlexScrollView());
+        list.add(new RScrollViewManager());
         return list;
     }
 }
