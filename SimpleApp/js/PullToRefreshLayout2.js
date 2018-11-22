@@ -1,17 +1,11 @@
-/**
- * Created by Administrator on 2018/11/6.
- * 链接：https://www.jianshu.com/p/9a4151852722
- */
 'use strict'
 
 import React, { Component } from 'react';
 import {
-    InteractionManager,
     StyleSheet,
     View,
     PanResponder,
     LayoutAnimation,
-    ProgressBarAndroid,
     ActivityIndicator,
     Dimensions,
     Text,
@@ -238,16 +232,6 @@ export default class PullToRefreshLayout2 extends Component {
         });
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        if (nextState.showPullStatus !== self.state.showPullStatus) {
-            return true;
-        }
-        if (self.state.showPullLastTime !== nextState.showPullLastTime) {
-            return true;
-        }
-        return false;
-    }
-
     render() {
         let pullText;
         let indicatorView;
@@ -299,7 +283,7 @@ export default class PullToRefreshLayout2 extends Component {
                 <View
                     ref={PULL_REFRESH_LAYOUT}
                     style={{ flex: 1, }}  {...this._panResponder.panHandlers} >
-                        {this.props.children}
+                    {this.props.children}
                 </View>
             </ScrollView>
         );
