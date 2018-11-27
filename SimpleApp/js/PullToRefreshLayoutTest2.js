@@ -27,23 +27,6 @@ export default class PullToRefreshLayoutTest2 extends Component {
         }, 2000);
     }
 
-    renderTest() {
-        return (
-            <View style={{ flex: 1 }}>
-                <Text style={styles.test}>
-                    Welcome to React Native!
-                </Text>
-                <Text style={styles.test}>
-                    To get started, edit index.android.js
-                </Text>
-                <Text style={styles.test}>
-                    To get started, edit index.android.js
-                </Text>
-            </View>
-        );
-    }
-
-
     render() {
         return (
             <View style={{ flex: 1 }}>
@@ -51,14 +34,11 @@ export default class PullToRefreshLayoutTest2 extends Component {
                     this.pulltorefresh = component
                 }}
                     onRefresh={() => {
-                        console.log('onRefresh')
                         this.onRefresh();
-
                     }}>
-                    {this.renderTest()}
                     <Image style={{ width: screen.width, height: 200 }}
                         source={require('./img/001.jpg')} />
-                    <Text>中华人民共和国</Text>
+                    <Text style={{ fontSize: 20, height: 60 }}>中华人民共和国</Text>
                     <View style={{ height: 200, backgroundColor: 'green' }}>
                     </View>
                 </PullToRefreshLayout>
