@@ -140,8 +140,10 @@ import ModalExample3 from './js/dialog/ModalExample3';
 
 import ModalTest from './js/dialog/ModalTest'
 
-// 触碰滚动
-import BallTest from './js/touch/BallTest';
+// 小球触碰滚动
+import SuspendedBall from './js/touch/SuspendedBall';
+// 小球触碰滚动
+import PanResponderExample from './js/touch/PanResponderExample';
 
 import PanResponderMazouri from './js/touch/PanResponderMazouri';
 

@@ -24,23 +24,21 @@ export default class Main extends Component {
 
     render() {
         return (
-            <FlexScrollView style={{ flex: 1, width: screen.width, height: screen.height, }}>
-                <TouchableNativeFeedback style={mainstyles.container}>
-                    <Text style={mainstyles.welcome}>
-                        Welcome to React Native!
+            <View style={mainstyles.container}>
+                <Text style={mainstyles.welcome}>
+                    Welcome to React Native!
                     </Text>
-                    <Text style={mainstyles.instructions}>
-                        To get started, edit index.android.js
+                <Text style={mainstyles.instructions}>
+                    To get started, edit index.android.js
                     </Text>
-                    <Text style={mainstyles.instructions}>
-                        Double tap R on your keyboard to reload,{'\n'}
-                        Shake or press menu button for dev menu
+                <Text style={mainstyles.instructions}>
+                    Double tap R on your keyboard to reload,{'\n'}
+                    Shake or press menu button for dev menu
                     </Text>
-                    <Text style={mainstyles.welcome}>
-                        中华人民共和国大圣
+                <Text style={mainstyles.welcome}>
+                    中华人民共和国大圣
                     </Text>
-                </TouchableNativeFeedback>
-            </FlexScrollView>
+            </View>
         );
     }
 
