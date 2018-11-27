@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/11/6.
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
     Dimensions,
     Image,
@@ -29,7 +29,7 @@ export default class PullToRefreshLayoutTest2 extends Component {
 
     renderTest() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <Text style={styles.test}>
                     Welcome to React Native!
                 </Text>
@@ -46,19 +46,20 @@ export default class PullToRefreshLayoutTest2 extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{ flex: 1 }}>
                 <PullToRefreshLayout ref={component => {
                     this.pulltorefresh = component
                 }}
-                                     onRefresh={() => {
-                                         console.log('onRefresh')
-                                         this.onRefresh();
+                    onRefresh={() => {
+                        console.log('onRefresh')
+                        this.onRefresh();
 
-                                     }}>
-                    <Image style={{width: screen.width, height: 200}}
-                           source={require('./img/001.jpg')}/>
+                    }}>
+                    {this.renderTest()}
+                    <Image style={{ width: screen.width, height: 200 }}
+                        source={require('./img/001.jpg')} />
                     <Text>中华人民共和国</Text>
-                    <View style={{height: 200, backgroundColor: 'green'}}>
+                    <View style={{ height: 200, backgroundColor: 'green' }}>
                     </View>
                 </PullToRefreshLayout>
             </View>
