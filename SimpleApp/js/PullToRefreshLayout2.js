@@ -34,11 +34,11 @@ const TAG = 'PullToRefreshLayout2';
 export default class PullToRefreshLayout2 extends Component {
 
     static propTypes = {
-        factor: PropTypes.number,
-        backTime: PropTypes.number,
-        headHeight: PropTypes.number,
-        baseHeight: PropTypes.number,
-        onRefresh: PropTypes.func,
+        factor: PropTypes.number,   // 下拉阻力系数
+        backTime: PropTypes.number,     // 视图返回时的动画持续时间
+        headHeight: PropTypes.number,   // header高度
+        baseHeight: PropTypes.number,   // 下拉到此高度需要执行一些状态变化
+        onRefresh: PropTypes.func,  // 刷新中的
     };
 
     static defaultProps = {
