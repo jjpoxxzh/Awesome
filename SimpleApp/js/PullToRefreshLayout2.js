@@ -13,11 +13,12 @@ import {
     Image,
     ImageBackground,
     UIManager,
+    // ScrollView,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-import ScrollView from './nativemodule/ScrollView';
+// import ScrollView from './nativemodule/ScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -54,10 +55,6 @@ export default class PullToRefreshLayout2 extends Component {
             showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
-        this.resetHeader = this.resetHeader.bind(this);
-        this.refreshStateHeader = this.refreshStateHeader.bind(this);
-        this.getTime = this.getTime.bind(this);
-        this.addZeroAtFront = this.addZeroAtFront.bind(this);
         // 要在Android上使用此动画，则需要在代码中启用
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
@@ -155,9 +152,11 @@ export default class PullToRefreshLayout2 extends Component {
     }
 
     _handlePanResponderGrant = (e, gestureState) => {
+        console.log(TAG, "_handlePanResponderGrant");
     }
 
     _handlePanResponderMove = (e, gestureState) => {
+        console.log(TAG, "_handlePanResponderMove");
         const { factor, headHeight, baseHeight } = this.props;
         this.headerStyles.style.height = headHeight + gestureState.dy / factor;
         if (this.headerStyles.style.height > headHeight + baseHeight) {
@@ -173,6 +172,7 @@ export default class PullToRefreshLayout2 extends Component {
     }
 
     _handlePanResponderEnd = (e, gestureState) => {
+        console.log(TAG, "_handlePanResponderEnd");
         const { headHeight, baseHeight } = this.props;
         if (this.headerStyles.style.height >= headHeight + baseHeight) {    // 如果超过基准高度
             this.refreshStateHeader();
