@@ -10,6 +10,7 @@ var CIRCLE_SIZE = 80;   // 球的直径
 
 /**
  * 随着手指在屏幕上移动而不断移动的小圆球
+ * 通过 setNativeProps 方式
  */
 export default class PanResponderExample extends Component {
 

@@ -1,13 +1,11 @@
-import React, {Component}  from 'react';
+import React, { Component } from 'react';
 import {
     PanResponder,
     StyleSheet,
     View,
-    Text,
-    processColor,
 } from 'react-native';
 
-var CIRCLE_SIZE = 80;
+const CIRCLE_SIZE = 80;
 
 export default class PanResponderMazouri extends Component {
 
@@ -21,7 +19,6 @@ export default class PanResponderMazouri extends Component {
         this._handlePanResponderEnd = this._handlePanResponderEnd.bind(this);
         this._highlight = this._highlight.bind(this);
         this.state = {
-            _panResponder: {},
             _previousLeft: 0,
             _previousTop: 0,
             backgroundColor: 'green',
@@ -29,7 +26,6 @@ export default class PanResponderMazouri extends Component {
     }
 
     componentWillMount() {
-        console.log("MAZOURI_LOG componentDidMount");
         this._panResponder = PanResponder.create({
             onStartShouldSetPanResponder: this._handleStartShouldSetPanResponder,
             onMoveShouldSetPanResponder: this._handleMoveShouldSetPanResponder,
@@ -38,7 +34,6 @@ export default class PanResponderMazouri extends Component {
             onPanResponderRelease: this._handlePanResponderEnd,
             onPanResponderTerminate: this._handlePanResponderEnd,
         });
-
         this.setState({
             _previousLeft: 20,
             _previousTop: 84,
@@ -46,15 +41,9 @@ export default class PanResponderMazouri extends Component {
             top: 84,
             backgroundColor: 'green',
         });
-
-    }
-
-    componentDidMount() {
-        console.log("MAZOURI_LOG componentDidMount");
     }
 
     render() {
-        console.log("MAZOURI_LOG left:" + this.state.left + "top:" + this.state.top + "backgroundColor:" + this.state.backgroundColor);
         return (
             <View style={styles.container}>
                 <View
@@ -71,22 +60,18 @@ export default class PanResponderMazouri extends Component {
     }
 
     _handleStartShouldSetPanResponder(e, gestureState) {
-        console.log("MAZOURI_LOG _handleStartShouldSetPanResponder");
         return true;
     }
 
     _handleMoveShouldSetPanResponder(e, gestureState) {
-        console.log("MAZOURI_LOG _handleMoveShouldSetPanResponder");
         return true;
     }
 
     _handlePanResponderGrant(e, gestureState) {
-        console.log("MAZOURI_LOG _handlePanResponderGrant");
         this._highlight;
     }
 
     _handlePanResponderMove(e, gestureState) {
-        console.log("MAZOURI_LOG _handlePanResponderMove");
         var _left = this.state._previousLeft + gestureState.dx;
         var _top = this.state._previousTop + gestureState.dy;
         this.setState({
@@ -96,7 +81,6 @@ export default class PanResponderMazouri extends Component {
     }
 
     _handlePanResponderEnd(e, gestureState) {
-        console.log("MAZOURI_LOG _handlePanResponderEnd");
         this._unHighlight;
         var _previousLeft = this.state._previousLeft + gestureState.dx;
         var _previousTop = this.state._previousTop + gestureState.dy;

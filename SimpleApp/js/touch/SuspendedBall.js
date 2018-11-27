@@ -15,6 +15,7 @@ const TAG = "SuspendedBall";
 
 /**
  * 随手指移动的小球，根据小球最后位置在屏幕哪边而停靠在哪个边缘处
+ * 通过 setState 方式
  */
 export default class SuspendedBall extends Component {
 
