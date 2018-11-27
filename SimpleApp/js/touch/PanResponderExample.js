@@ -101,7 +101,6 @@ export default class PanResponderExample extends Component {
     }
 
     _handlePanResponderMove = (e: Object, gestureState: Object) => {
-        console.log(gestureState.dx,gestureState.dy);
         this._circleStyles.style.left = this._previousLeft + gestureState.dx;
         /**
          * gestureState.dx 表示从触摸操作开始时的累计横向距离，由于此方法会不断调用，则gestureState.dx逐渐累积增大，

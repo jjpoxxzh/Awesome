@@ -21,7 +21,7 @@ var screen = Dimensions.get('window');
 export default class PullToRefreshLayoutTest2 extends Component {
 
     // 模拟网络取数据
-    stopRefresh() {
+    onRefresh() {
         setTimeout(() => {
             this.pulltorefresh.stopRefresh();   // 停止刷新
         }, 2000);
@@ -52,10 +52,9 @@ export default class PullToRefreshLayoutTest2 extends Component {
                 }}
                                      onRefresh={() => {
                                          console.log('onRefresh')
-                                         this.stopRefresh();
+                                         this.onRefresh();
 
                                      }}>
-                    {this.renderTest()}
                     <Image style={{width: screen.width, height: 200}}
                            source={require('./img/001.jpg')}/>
                     <Text>中华人民共和国</Text>
