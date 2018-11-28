@@ -15,7 +15,7 @@ import {
     Image,
     ImageBackground,
     UIManager,
-    // ScrollView,
+    ScrollView,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -55,6 +55,7 @@ export default class PullToRefreshLayout3 extends Component {
             showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
+        this.headerFlag = false;
         // 要在Android上使用此动画，则需要在代码中启用
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
@@ -109,7 +110,7 @@ export default class PullToRefreshLayout3 extends Component {
         }
         return (
             <View style={styles.base}>
-                <View style={{ position: 'absolute' }} >
+                <ScrollView style={{ position: 'absolute' }} >
                     <View style={{
                         width: deviceWidth,
                         height: headHeight,
@@ -131,7 +132,7 @@ export default class PullToRefreshLayout3 extends Component {
                             }}>最后更新: {this.state.showPullLastTime}</Text>
                         </View>
                     </View>
-                </View>
+                </ScrollView>
                 <View ref={(content) => { this.content = content }}
                     style={{ flex: 1, }}  {...this._panResponder.panHandlers} >
                     {this.props.children}
@@ -155,26 +156,33 @@ export default class PullToRefreshLayout3 extends Component {
     _handlePanResponderMove = (e, gestureState) => {
         console.log(TAG, "_handlePanResponderMove");
         const { factor, headHeight } = this.props;
-        this.contentStyles.style.marginTop = gestureState.dy / factor;
-        if (this.contentStyles.style.marginTop > headHeight) {
-            this.setState({
-                showPullStatus: ShowLoadingStatus.SHOW_UP,
-            });
-        } else {
-            this.setState({
-                showPullStatus: ShowLoadingStatus.SHOW_DOWN,
-            });
+        let deltaY = gestureState.dy / factor;
+        this.contentStyles.style.marginTop = deltaY;
+        this.headerFlag = false;
+        if (deltaY >= 0) {
+            if (this.contentStyles.style.marginTop > headHeight) {
+                this.setState({
+                    showPullStatus: ShowLoadingStatus.SHOW_UP,
+                });
+            } else {
+                this.setState({
+                    showPullStatus: ShowLoadingStatus.SHOW_DOWN,
+                });
+            }
+            this._updateNativeStyles();
+            this.headerFlag = true;
         }
-        this._updateNativeStyles();
     }
 
     _handlePanResponderEnd = (e, gestureState) => {
         console.log(TAG, "_handlePanResponderEnd");
         const { headHeight } = this.props;
-        if (this.contentStyles.style.marginTop >= headHeight) {    // 如果超过基准高度
-            this.refreshStateHeader();
-        } else {    // 未超过基准高度
-            this.resetHeader();
+        if (this.headerFlag) {
+            if (this.contentStyles.style.marginTop >= headHeight) {    // 如果超过基准高度
+                this.refreshStateHeader();
+            } else {    // 未超过基准高度
+                this.resetHeader();
+            }
         }
     }
 

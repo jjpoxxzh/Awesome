@@ -6,8 +6,6 @@ import React, { Component } from 'react';
 import {
     Dimensions,
     Image,
-    TouchableNativeFeedback,
-    TouchableOpacity,
     Text,
     StyleSheet,
     View
@@ -38,7 +36,7 @@ export default class PullToRefreshLayoutTest2 extends Component {
                     }}>
                     <Image style={{ width: screen.width, height: 200 }}
                         source={require('./img/001.jpg')} />
-                    <Text style={{ fontSize: 20, height: 60 }}>中华人民共和国</Text>
+                    <Text style={{ fontSize: 20, height: 160 }}>中华人民共和国</Text>
                     <View style={{ height: 200, backgroundColor: 'green' }}>
                     </View>
                 </PullToRefreshLayout>

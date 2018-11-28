@@ -13,7 +13,7 @@ import {
     Image,
     ImageBackground,
     UIManager,
-    // ScrollView,
+    ScrollView,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -32,6 +32,10 @@ const ShowLoadingStatus = {
 
 const TAG = 'PullToRefreshLayout2';
 
+/**
+ * 此下拉拖动的视图存在的问题是：使用系统的ScrollView会导致下拉不灵活，按往下拉时没问题，手碰触式下拉很不灵活，
+ * 所以修改了原生的代码，使用自定义的ScrollView代替
+ */
 export default class PullToRefreshLayout2 extends Component {
 
     static propTypes = {
@@ -55,6 +59,7 @@ export default class PullToRefreshLayout2 extends Component {
             showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
+        this.headerFlag = false;
         // 要在Android上使用此动画，则需要在代码中启用
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
@@ -109,7 +114,7 @@ export default class PullToRefreshLayout2 extends Component {
             pullText = "刷新中…";
         }
         return (
-            <View style={styles.base}>
+            <ScrollView style={styles.base}>
                 <ImageBackground style={{ width: deviceWidth }}
                     resizeMode={'stretch'}
                     source={require('./img/header.png')}
@@ -139,7 +144,7 @@ export default class PullToRefreshLayout2 extends Component {
                     style={{ flex: 1, }}  {...this._panResponder.panHandlers} >
                     {this.props.children}
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 
@@ -152,32 +157,40 @@ export default class PullToRefreshLayout2 extends Component {
     }
 
     _handlePanResponderGrant = (e, gestureState) => {
-        console.log(TAG, "_handlePanResponderGrant");
+        // console.log(TAG, "_handlePanResponderGrant");
     }
 
     _handlePanResponderMove = (e, gestureState) => {
-        console.log(TAG, "_handlePanResponderMove");
+        // console.log(TAG, "_handlePanResponderMove");
         const { factor, headHeight, baseHeight } = this.props;
-        this.headerStyles.style.height = headHeight + gestureState.dy / factor;
-        if (this.headerStyles.style.height > headHeight + baseHeight) {
-            this.setState({
-                showPullStatus: ShowLoadingStatus.SHOW_UP,
-            });
-        } else {
-            this.setState({
-                showPullStatus: ShowLoadingStatus.SHOW_DOWN,
-            });
+        let deltaY = gestureState.dy / factor;
+        this.headerStyles.style.height = headHeight + deltaY;
+        // console.log(TAG, deltaY, this.headerStyles.style.height);
+        this.headerFlag = false;
+        if (deltaY >= 0) {
+            if (this.headerStyles.style.height > headHeight + baseHeight) {
+                this.setState({
+                    showPullStatus: ShowLoadingStatus.SHOW_UP,
+                });
+            } else {
+                this.setState({
+                    showPullStatus: ShowLoadingStatus.SHOW_DOWN,
+                });
+            }
+            this._updateNativeStyles();
+            this.headerFlag = true;
         }
-        this._updateNativeStyles();
     }
 
     _handlePanResponderEnd = (e, gestureState) => {
-        console.log(TAG, "_handlePanResponderEnd");
+        // console.log(TAG, "_handlePanResponderEnd");
         const { headHeight, baseHeight } = this.props;
-        if (this.headerStyles.style.height >= headHeight + baseHeight) {    // 如果超过基准高度
-            this.refreshStateHeader();
-        } else {    // 未超过基准高度
-            this.resetHeader();
+        if (this.headerFlag) {
+            if (this.headerStyles.style.height >= headHeight + baseHeight) {    // 如果超过基准高度
+                this.refreshStateHeader();
+            } else {    // 未超过基准高度
+                this.resetHeader();
+            }
         }
     }
 
@@ -242,6 +255,7 @@ export default class PullToRefreshLayout2 extends Component {
     }
 
     stopRefresh() {
+        console.log(TAG, 'stopRefresh');
         let savedDate = this.getTime();
         this.setState({
             showPullLastTime: savedDate,
