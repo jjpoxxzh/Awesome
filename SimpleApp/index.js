@@ -173,5 +173,7 @@ import PullToRefreshLayoutTest from './js/PullToRefreshLayoutTest';
 // 下拉刷新(修改视图突出显示)
 import PullToRefreshLayoutTest2 from './js/PullToRefreshLayoutTest2';
 
-AppRegistry.registerComponent('SimpleApp', () => MainTest);
+import TouchConflict from './js/touch/TouchConflict';
 
+
+AppRegistry.registerComponent('SimpleApp', () => MainTest);
