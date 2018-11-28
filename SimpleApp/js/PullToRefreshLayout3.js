@@ -55,7 +55,9 @@ export default class PullToRefreshLayout3 extends Component {
             showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
-        this.headerFlag = false;
+        this.headerFlag = false;    // 只有ScrollView确实弹性拖动了，才调用重置头的方法
+        this.isTopFlag = true;  // ScrollView是否滚动到顶
+        this.isEndFlag = false;     // ScrollView是否滚动到底
         // 要在Android上使用此动画，则需要在代码中启用
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
@@ -109,8 +111,10 @@ export default class PullToRefreshLayout3 extends Component {
             pullText = "刷新中…";
         }
         return (
-            <View style={styles.base}>
-                <ScrollView style={{ position: 'absolute' }} >
+            <ScrollView onMomentumScrollEnd={this._contentViewScroll.bind(this)}
+                style={styles.base}>
+                <View style={{ position: 'absolute' }}
+                    ref={(header) => { this.header = header }}>
                     <View style={{
                         width: deviceWidth,
                         height: headHeight,
@@ -132,12 +136,12 @@ export default class PullToRefreshLayout3 extends Component {
                             }}>最后更新: {this.state.showPullLastTime}</Text>
                         </View>
                     </View>
-                </ScrollView>
+                </View>
                 <View ref={(content) => { this.content = content }}
                     style={{ flex: 1, }}  {...this._panResponder.panHandlers} >
                     {this.props.children}
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 
@@ -159,7 +163,7 @@ export default class PullToRefreshLayout3 extends Component {
         let deltaY = gestureState.dy / factor;
         this.contentStyles.style.marginTop = deltaY;
         this.headerFlag = false;
-        if (deltaY >= 0) {
+        if (this.isTopFlag && (deltaY >= 0)) {
             if (this.contentStyles.style.marginTop > headHeight) {
                 this.setState({
                     showPullStatus: ShowLoadingStatus.SHOW_UP,
@@ -256,6 +260,27 @@ export default class PullToRefreshLayout3 extends Component {
 
         });
         this.resetHeader();
+    }
+
+    _contentViewScroll(e) {
+        var offsetY = e.nativeEvent.contentOffset.y; //滑动距离
+        var contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
+        var oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
+        let m1 = Math.ceil(offsetY + oriageScrollHeight);
+        let m2 = parseInt(contentSizeHeight);
+        // console.log(TAG, offsetY, contentSizeHeight, oriageScrollHeight);
+        console.log(TAG, m1, m2);
+        if (m1 >= m2) {
+            this.isEndFlag = true;
+            this.isTopFlag = false;
+            console.log(TAG, '滑动到底部')
+        } else {
+            this.isEndFlag = false;
+            if (offsetY <= 0) {
+                this.isTopFlag = true;
+                console.log(TAG, '滑动到顶部')
+            }
+        }
     }
 }
 

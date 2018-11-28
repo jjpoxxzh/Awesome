@@ -13,12 +13,12 @@ import {
     Image,
     ImageBackground,
     UIManager,
-    ScrollView,
+    // ScrollView,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-// import ScrollView from './nativemodule/ScrollView';
+import ScrollView from './nativemodule/ScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -59,7 +59,9 @@ export default class PullToRefreshLayout2 extends Component {
             showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
             showPullLastTime: 'NONE',
         };
-        this.headerFlag = false;
+        this.headerFlag = false;    // 只有ScrollView确实弹性拖动了，才调用重置头的方法
+        this.isTopFlag = true;  // ScrollView是否滚动到顶
+        this.isEndFlag = false;     // ScrollView是否滚动到底
         // 要在Android上使用此动画，则需要在代码中启用
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
     }
@@ -114,7 +116,8 @@ export default class PullToRefreshLayout2 extends Component {
             pullText = "刷新中…";
         }
         return (
-            <ScrollView style={styles.base}>
+            <ScrollView onMomentumScrollEnd={this._contentViewScroll.bind(this)}
+                style={styles.base} >
                 <ImageBackground style={{ width: deviceWidth }}
                     resizeMode={'stretch'}
                     source={require('./img/header.png')}
@@ -167,7 +170,7 @@ export default class PullToRefreshLayout2 extends Component {
         this.headerStyles.style.height = headHeight + deltaY;
         // console.log(TAG, deltaY, this.headerStyles.style.height);
         this.headerFlag = false;
-        if (deltaY >= 0) {
+        if (this.isTopFlag && (deltaY >= 0)) {
             if (this.headerStyles.style.height > headHeight + baseHeight) {
                 this.setState({
                     showPullStatus: ShowLoadingStatus.SHOW_UP,
@@ -264,6 +267,27 @@ export default class PullToRefreshLayout2 extends Component {
         AsyncStorage.setItem(REFRESH_LAST_TIME_KEY, savedDate, () => {
 
         });
+    }
+
+    _contentViewScroll(e) {
+        var offsetY = e.nativeEvent.contentOffset.y; //滑动距离
+        var contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
+        var oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
+        let m1 = Math.ceil(offsetY + oriageScrollHeight);
+        let m2 = parseInt(contentSizeHeight);
+        console.log(TAG, offsetY, contentSizeHeight, oriageScrollHeight);
+        // console.log(TAG, m1, m2);
+        if (m1 >= m2) {
+            this.isEndFlag = true;
+            this.isTopFlag = false;
+            console.log(TAG, '滑动到底部')
+        } else {
+            this.isEndFlag = false;
+            if (offsetY <= 0) {
+                this.isTopFlag = true;
+                console.log(TAG, '滑动到顶部')
+            }
+        }
     }
 }
 
