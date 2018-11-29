@@ -274,7 +274,7 @@ export default class PullToRefreshLayout2 extends Component {
         var contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
         var oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
         let m1 = Math.ceil(offsetY + oriageScrollHeight);
-        let m2 = parseInt(contentSizeHeight);
+        let m2 = parseInt(contentSizeHeight, 10);
         console.log(TAG, offsetY, contentSizeHeight, oriageScrollHeight);
         // console.log(TAG, m1, m2);
         if (m1 >= m2) {
