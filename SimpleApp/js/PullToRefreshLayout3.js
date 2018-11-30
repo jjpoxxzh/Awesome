@@ -40,7 +40,7 @@ export default class PullToRefreshLayout3 extends Component {
         factor: PropTypes.number,   // 下拉阻力系数
         backTime: PropTypes.number,     // 视图返回时的动画持续时间
         headHeight: PropTypes.number,   // header高度
-        onRefresh: PropTypes.func,  // 刷新中的
+        onRefresh: PropTypes.func,  // 刷新中的方法
     };
 
     static defaultProps = {
@@ -52,7 +52,7 @@ export default class PullToRefreshLayout3 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示加载状态
+            showPullStatus: ShowLoadingStatus.SHOW_DOWN,    // 展示下拉刷新状态
             showPullLastTime: 'NONE',
         };
         this.headerFlag = false;    // 只有ScrollView确实弹性拖动了，才调用重置头的方法
@@ -74,6 +74,11 @@ export default class PullToRefreshLayout3 extends Component {
         this.contentStyles = {
             style: {
                 marginTop: 0,
+            }
+        };
+        this.contentToFooterStyles = {
+            style: {
+                marginBottom: 0,
             }
         };
     }
@@ -112,6 +117,7 @@ export default class PullToRefreshLayout3 extends Component {
         }
         return (
             <ScrollView onMomentumScrollEnd={this._contentViewScroll.bind(this)}
+                ref={(scrollview) => { this.scrollview = scrollview }}
                 style={styles.base}>
                 <View style={{ position: 'absolute' }}
                     ref={(header) => { this.header = header }}>
@@ -145,13 +151,9 @@ export default class PullToRefreshLayout3 extends Component {
         );
     }
 
-    _handleStartShouldSetPanResponder = (e, gestureState) => {
-        return true;
-    }
+    _handleStartShouldSetPanResponder = (e, gestureState) => true;
 
-    _handleMoveShouldSetPanResponder = (e, gestureState) => {
-        return true;
-    }
+    _handleMoveShouldSetPanResponder = (e, gestureState) => true;
 
     _handlePanResponderGrant = (e, gestureState) => {
         console.log(TAG, "_handlePanResponderGrant");
@@ -161,9 +163,10 @@ export default class PullToRefreshLayout3 extends Component {
         console.log(TAG, "_handlePanResponderMove");
         const { factor, headHeight } = this.props;
         let deltaY = gestureState.dy / factor;
-        this.contentStyles.style.marginTop = deltaY;
         this.headerFlag = false;
         if (this.isTopFlag && (deltaY >= 0)) {
+            this.contentStyles.style.marginTop = deltaY;
+            // console.log(TAG, deltaY, this.contentStyles.style.marginTop);
             if (this.contentStyles.style.marginTop > headHeight) {
                 this.setState({
                     showPullStatus: ShowLoadingStatus.SHOW_UP,
@@ -232,14 +235,12 @@ export default class PullToRefreshLayout3 extends Component {
         });
     }
 
-
     addZeroAtFront(count) {
         if (count < 10) {
             count = "0" + count;
         }
         return count;
     }
-
 
     getTime() {
         let date = new Date();
@@ -267,9 +268,9 @@ export default class PullToRefreshLayout3 extends Component {
         var contentSizeHeight = e.nativeEvent.contentSize.height; //scrollView contentSize高度
         var oriageScrollHeight = e.nativeEvent.layoutMeasurement.height; //scrollView高度
         let m1 = Math.ceil(offsetY + oriageScrollHeight);
-        let m2 = parseInt(contentSizeHeight);
+        let m2 = parseInt(contentSizeHeight, 10);
         // console.log(TAG, offsetY, contentSizeHeight, oriageScrollHeight);
-        console.log(TAG, m1, m2);
+        // console.log(TAG, m1, m2);
         if (m1 >= m2) {
             this.isEndFlag = true;
             this.isTopFlag = false;

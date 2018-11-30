@@ -151,13 +151,9 @@ export default class PullToRefreshLayout2 extends Component {
         );
     }
 
-    _handleStartShouldSetPanResponder = (e, gestureState) => {
-        return true;
-    }
+    _handleStartShouldSetPanResponder = (e, gestureState) => true;
 
-    _handleMoveShouldSetPanResponder = (e, gestureState) => {
-        return true;
-    }
+    _handleMoveShouldSetPanResponder = (e, gestureState) => true;
 
     _handlePanResponderGrant = (e, gestureState) => {
         // console.log(TAG, "_handlePanResponderGrant");
