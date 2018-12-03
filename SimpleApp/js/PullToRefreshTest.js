@@ -12,8 +12,11 @@ import {
 } from 'react-native';
 
 const screen = Dimensions.get('window');
-import PullToRefresh from './PullToRefresh1';
+import PullToRefresh from './PullToRefresh3';
 
+/**
+ * 下拉刷新测试
+ */
 export default class PullToRefreshTest extends Component {
 
     // 模拟网络取数据
@@ -34,9 +37,9 @@ export default class PullToRefreshTest extends Component {
                     onRefresh={() => {
                         this.onRefresh();
                     }}>
+                    <Text style={{ fontSize: 20, height: 160, backgroundColor: '#FFAC69' }}>中华人民共和国</Text>
                     <Image style={{ width: screen.width, height: 200 }}
                         source={require('./img/001.jpg')} />
-                    <Text style={{ fontSize: 20, height: 160 }}>中华人民共和国</Text>
                     <View style={{ height: 200, backgroundColor: 'green' }}>
                     </View>
                 </PullToRefresh>

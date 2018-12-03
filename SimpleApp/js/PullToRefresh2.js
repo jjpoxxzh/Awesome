@@ -19,6 +19,7 @@ import {
 
 import PropTypes from 'prop-types';
 
+// RN自带的ScrollView会导致下拉不灵活，按往下拉时没问题，手碰触式下拉很不灵活，故修改了原生的的ScrollView代替
 import ScrollView from './nativemodule/ScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
@@ -33,6 +34,9 @@ const ShowLoadingStatus = {
 
 const TAG = 'PullToRefresh2';
 
+/**
+ * 通用的下拉刷新(头部隐藏，通过下拉显示出来，下拉到一定距离后释放则展示刷新中的状态)
+ */
 export default class PullToRefresh2 extends Component {
 
     static propTypes = {
@@ -75,11 +79,6 @@ export default class PullToRefresh2 extends Component {
                 marginTop: 0,
             }
         };
-        this.contentToFooterStyles = {
-            style: {
-                marginBottom: 0,
-            }
-        };
     }
 
     componentDidMount() {
@@ -115,7 +114,9 @@ export default class PullToRefresh2 extends Component {
             pullText = "刷新中…";
         }
         return (
-            <ScrollView onMomentumScrollEnd={this._contentViewScroll.bind(this)}
+            <ScrollView
+                onMomentumScrollEnd={this._contentViewScroll.bind(this)}
+                onScrollEndDrag={this._contentViewScroll.bind(this)}
                 ref={(scrollview) => { this.scrollview = scrollview }}
                 style={styles.base}>
                 <View style={{ position: 'absolute' }}
