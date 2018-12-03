@@ -11,12 +11,10 @@ import {
     View
 } from 'react-native';
 
-import PullToRefreshLayout from './PullToRefreshLayout2';
+const screen = Dimensions.get('window');
+import PullToRefresh from './PullToRefresh1';
 
-var screen = Dimensions.get('window');
-
-
-export default class PullToRefreshLayoutTest2 extends Component {
+export default class PullToRefreshTest extends Component {
 
     // 模拟网络取数据
     onRefresh() {
@@ -25,16 +23,10 @@ export default class PullToRefreshLayoutTest2 extends Component {
         }, 2000);
     }
 
-    onLoad() {
-        setTimeout(() => {
-            this.pulltorefresh.stopLoad();   // 停止刷新
-        }, 2000);
-    }
-
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <PullToRefreshLayout
+                <PullToRefresh
                     ref={component => {
                         this.pulltorefresh = component
                     }}
@@ -47,7 +39,7 @@ export default class PullToRefreshLayoutTest2 extends Component {
                     <Text style={{ fontSize: 20, height: 160 }}>中华人民共和国</Text>
                     <View style={{ height: 200, backgroundColor: 'green' }}>
                     </View>
-                </PullToRefreshLayout>
+                </PullToRefresh>
             </View>
         );
     }

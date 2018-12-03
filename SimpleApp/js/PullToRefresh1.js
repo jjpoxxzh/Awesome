@@ -30,13 +30,13 @@ const ShowLoadingStatus = {
     SHOW_LOADING: 2,    // 刷新
 };
 
-const TAG = 'PullToRefreshLayout2';
+const TAG = 'PullToRefresh1';
 
 /**
  * 此下拉拖动的视图存在的问题是：使用系统的ScrollView会导致下拉不灵活，按往下拉时没问题，手碰触式下拉很不灵活，
  * 所以修改了原生的代码，使用自定义的ScrollView代替
  */
-export default class PullToRefreshLayout2 extends Component {
+export default class PullToRefresh1 extends Component {
 
     static propTypes = {
         factor: PropTypes.number,   // 下拉阻力系数
@@ -101,7 +101,7 @@ export default class PullToRefreshLayout2 extends Component {
     }
 
     render() {
-        const { headHeight } = this.props;
+        const { headHeight, backgroundSource } = this.props;
         let pullText;
         let indicatorView;
         if (this.state.showPullStatus === ShowLoadingStatus.SHOW_DOWN) {

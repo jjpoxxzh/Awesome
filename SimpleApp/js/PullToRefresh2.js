@@ -31,9 +31,9 @@ const ShowLoadingStatus = {
     SHOW_LOADING: 2,    // 刷新
 };
 
-const TAG = 'PullToRefreshLayout3';
+const TAG = 'PullToRefresh2';
 
-export default class PullToRefreshLayout3 extends Component {
+export default class PullToRefresh2 extends Component {
 
     static propTypes = {
         factor: PropTypes.number,   // 下拉阻力系数
