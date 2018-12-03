@@ -168,9 +168,7 @@ import Talks from './js/Talks';
 // 下拉滚动视图的弹性头部
 import ParallaxViewTest from './js/ParallaxViewTest';
 
-// 下拉刷新(引用)
-import PullToRefreshLayoutTest from './js/PullToRefreshLayoutTest';
-// 下拉刷新(修改视图突出显示)
+// 下拉刷新(修改视图显示一个可弹性拖动的头部)
 import PullToRefreshLayoutTest2 from './js/PullToRefreshLayoutTest2';
 
 import TouchConflict from './js/touch/TouchConflict';

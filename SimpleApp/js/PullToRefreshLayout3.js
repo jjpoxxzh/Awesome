@@ -13,14 +13,13 @@ import {
     Text,
     AsyncStorage,
     Image,
-    ImageBackground,
     UIManager,
-    ScrollView,
+    // ScrollView,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
 
-// import ScrollView from './nativemodule/ScrollView';
+import ScrollView from './nativemodule/ScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
 

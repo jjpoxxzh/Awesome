@@ -44,6 +44,12 @@ export default class PullToRefreshLayout2 extends Component {
         headHeight: PropTypes.number,   // header高度
         baseHeight: PropTypes.number,   // 下拉到此高度需要执行一些状态变化
         onRefresh: PropTypes.func,  // 刷新中的
+        backgroundSource: PropTypes.oneOfType([
+            PropTypes.shape({
+                uri: PropTypes.string,
+            }),
+            PropTypes.number,
+        ]),
     };
 
     static defaultProps = {
@@ -120,7 +126,7 @@ export default class PullToRefreshLayout2 extends Component {
                 style={styles.base} >
                 <ImageBackground style={{ width: deviceWidth }}
                     resizeMode={'stretch'}
-                    source={require('./img/header.png')}
+                    source={backgroundSource}
                     ref={(header) => { this.header = header }}>
                     <View style={{
                         height: headHeight,
@@ -151,9 +157,9 @@ export default class PullToRefreshLayout2 extends Component {
         );
     }
 
-    _handleStartShouldSetPanResponder = (e, gestureState) => true;
+    _handleStartShouldSetPanResponder = (e, gestureState) => true
 
-    _handleMoveShouldSetPanResponder = (e, gestureState) => true;
+    _handleMoveShouldSetPanResponder = (e, gestureState) => true
 
     _handlePanResponderGrant = (e, gestureState) => {
         // console.log(TAG, "_handlePanResponderGrant");

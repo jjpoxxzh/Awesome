@@ -25,12 +25,20 @@ export default class PullToRefreshLayoutTest2 extends Component {
         }, 2000);
     }
 
+    onLoad() {
+        setTimeout(() => {
+            this.pulltorefresh.stopLoad();   // 停止刷新
+        }, 2000);
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <PullToRefreshLayout ref={component => {
-                    this.pulltorefresh = component
-                }}
+                <PullToRefreshLayout
+                    ref={component => {
+                        this.pulltorefresh = component
+                    }}
+                    backgroundSource={require('./img/header.png')}
                     onRefresh={() => {
                         this.onRefresh();
                     }}>
