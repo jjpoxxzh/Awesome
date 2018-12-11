@@ -169,9 +169,10 @@ import Talks from './js/Talks';
 import ParallaxViewTest from './js/ParallaxViewTest';
 
 // 下拉刷新(修改视图显示一个可弹性拖动的头部)
-import PullToRefreshLayoutTest2 from './js/PullToRefreshLayoutTest2';
+import PullToRefreshTest from './js/PullToRefreshTest';
 
 import TouchConflict from './js/touch/TouchConflict';
 
+import LoadMore from './js/LoadMore';
 
 AppRegistry.registerComponent('SimpleApp', () => MainTest);

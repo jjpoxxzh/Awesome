@@ -13,7 +13,7 @@ import { observer, inject } from 'mobx-react';
 
 /**
  * Mobx修改状态与通过setState略有不同。它会自动判断状态与上次是否相同，相同时不会引起render，不相同才render。
- * 也就是说，它在内部已经经常过判断了，只有状态不同时，才会走入到组件的生命周期来。
+ * 也就是说，它在内部已经经过判断了，只有状态不同时，才会走入到组件的生命周期来。
  * 
  */
 @inject('fooStore')
