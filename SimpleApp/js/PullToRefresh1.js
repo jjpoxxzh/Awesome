@@ -19,7 +19,7 @@ import {
 import PropTypes from 'prop-types';
 
 // RN自带的ScrollView会导致下拉不灵活，按往下拉时没问题，手碰触式下拉很不灵活，故修改了原生的的ScrollView代替
-import ScrollView from './nativemodule/ScrollView';
+import ScrollView from './nativemodule/PlantfromScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -126,6 +126,7 @@ export default class PullToRefresh1 extends Component {
             <ScrollView
                 onMomentumScrollEnd={this._contentViewScroll.bind(this)}
                 onScrollEndDrag={this._contentViewScroll.bind(this)}
+                bounces={false}
                 style={styles.base} >
                 <ImageBackground style={{ width: deviceWidth }}
                     resizeMode={'stretch'}

@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 
 const screen = Dimensions.get('window');
-import PullToRefresh from './PullToRefresh3';
+import PullToRefresh from './PullToRefresh1';
 
 /**
  * 下拉刷新测试
