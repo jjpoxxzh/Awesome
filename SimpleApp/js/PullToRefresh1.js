@@ -18,7 +18,10 @@ import {
 
 import PropTypes from 'prop-types';
 
-// RN自带的ScrollView会导致下拉不灵活，按往下拉时没问题，手碰触式下拉很不灵活，故修改了原生的的ScrollView代替
+/**
+ * RN自带的ScrollView会导致下拉不灵活，按往下拉(手指触摸一会再慢慢下移)时没问题，手碰触式下拉(手指碰到触摸就快速下拉)
+ * 很不灵活，故修改了原生的的ScrollView代替
+ */
 import ScrollView from './nativemodule/PlantfromScrollView';
 
 const deviceWidth = Dimensions.get('window').width;
