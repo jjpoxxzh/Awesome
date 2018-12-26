@@ -217,3 +217,7 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+task listJars {
+    configurations.compile.each { File file -> println file.path }
+}
